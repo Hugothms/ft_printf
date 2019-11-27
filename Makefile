@@ -6,29 +6,33 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 13:45:08 by hthomas           #+#    #+#              #
-#    Updated: 2019/11/27 14:00:48 by hthomas          ###   ########.fr        #
+#    Updated: 2019/11/27 18:17:39 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CXX = g++
-CXXFLAGS = -Wall -Werror -Wextra -pedantic -std=c++17 -g -fsanitize=address
+C = gcc
+CFLAGS = -Wall -Werror -Wextra -pedantic -g -fsanitize=address
 LDFLAGS =  -fsanitize=address
 
-SRC =
-OBJ = $(SRC:.cc=.o)
-EXEC = libftprintf.a
+SRC = ft_printf.c
+OBJ = $(SRC:.c=.o)
+LIB = libftprintf.a
+LBLIBS = libft.a
+LIBDIR = libft/
+MAKE = make
 
-all:	$(EXEC)
+all:	$(LIB)
 
-$(EXEC): $(OBJ)
-	$(CXX) $(LDFLAGS) -o $@ $(OBJ) $(LBLIBS)
+$(LIB): $(OBJ)
+	cd libft && $(MAKE)
+	mv $(LIBDIR)$(LBLIBS) .
+	ar rc $(LIB) $(LBLIBS) ${OBJS}
+	ranlib $(LIB)
 
 clean:
-	rm -rf $(OBJ)
+	rm -rf $(OBJ) $(LBLIBS)
 
 fclean:	clean
-	rm -f $(EXEC)
+	rm -f $(LIB)
 
 re:		fclean all
-
-cd subdir && $(MAKE)

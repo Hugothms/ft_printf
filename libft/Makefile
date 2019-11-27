@@ -6,7 +6,7 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/04 11:49:24 by hthomas           #+#    #+#              #
-#    Updated: 2019/11/27 13:52:39 by hthomas          ###   ########.fr        #
+#    Updated: 2019/11/27 17:16:21 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,7 @@ $(NAME):	${OBJS}
 	ranlib	$(NAME)
 
 .c.o:
-	${CC} ${CFLAGS} -I $(INCLUDES) -c $< -o ${<:.c=.o}
+	${CC} ${CFLAGS} -I$(INCLUDES) -c $< -o ${<:.c=.o}
 
 clean:
 	rm -f $(OBJS)
@@ -85,5 +85,3 @@ fclean:		clean
 	rm -f $(NAME)
 
 re:			fclean all
-
-.PHONY:		all clean fclean re
