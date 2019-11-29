@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:40:45 by hthomas           #+#    #+#             */
-/*   Updated: 2019/11/29 17:44:15 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/11/29 18:33:52 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int	main(int argc, char const *argv[])
 {
-	ft_printf("Hello World!\n And hello %s", "Hugo");
+	ft_printf("Hello World!\nAnd hello %s", "Hugo");
 	return (0);
 }

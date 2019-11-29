@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2019/11/29 18:00:06 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/11/29 18:29:43 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void ft_char(const char *format, va_list arg, t_sp sp)
 {
-	sp.c = va_arg(arg, char);
+	sp.d = va_arg(arg, int);
 }

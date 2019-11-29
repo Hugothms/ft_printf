@@ -6,13 +6,13 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2019/11/29 18:10:06 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/11/29 18:33:49 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_char(const char *format, va_list arg, t_sp sp)
+void ft_hex(const char *format, va_list arg, t_sp sp)
 {
-	sp.d = va_arg(arg, int);
+	sp.u = va_arg(arg, unsigned int);
 }
