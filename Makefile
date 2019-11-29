@@ -6,7 +6,7 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 13:45:08 by hthomas           #+#    #+#              #
-#    Updated: 2019/11/29 19:28:38 by hthomas          ###   ########.fr        #
+#    Updated: 2019/11/29 20:27:01 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ CFLAGS = -Wall -Werror -Wextra -pedantic -g -fsanitize=address
 LDFLAGS =  -fsanitize=address
 
 SRC = 	ft_printf.c			\
+		s_printf_utils.c	\
 		ft_char.c			\
 		ft_hex.c			\
 		ft_integer.c		\
@@ -50,5 +51,5 @@ re:		fclean all
 
 test: makelibft
 	$(C) $(SRC) main.c $(LBLIBS)
-	clear
+	#clear
 	./a.out
