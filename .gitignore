@@ -4,3 +4,4 @@ a.out*
 *.txt
 *.o
 *.a
+printf.code-workspace

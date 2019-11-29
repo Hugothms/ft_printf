@@ -6,7 +6,7 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 13:45:08 by hthomas           #+#    #+#              #
-#    Updated: 2019/11/27 18:17:39 by hthomas          ###   ########.fr        #
+#    Updated: 2019/11/29 10:04:25 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,11 @@ $(LIB): $(OBJ)
 	ranlib $(LIB)
 
 clean:
+	cd libft && $(MAKE) clean
 	rm -rf $(OBJ) $(LBLIBS)
 
 fclean:	clean
+	cd libft && $(MAKE) fclean
 	rm -f $(LIB)
 
 re:		fclean all

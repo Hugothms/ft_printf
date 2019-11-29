@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 16:04:54 by hthomas           #+#    #+#             */
-/*   Updated: 2019/11/29 14:18:22 by hthomas          ###   ########.fr       */
+/*   Created: 2019/11/29 16:40:45 by hthomas           #+#    #+#             */
+/*   Updated: 2019/11/29 17:44:15 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_isupper(int c)
+int	main(int argc, char const *argv[])
 {
-	return (c <= 'Z' && c >= 'A');
-}
-
-int	ft_islower(int c)
-{
-	return (c <= 'z' && c >= 'a');
-}
-
-int	ft_isalpha(int c)
-{
-	return (ft_islower(c) || ft_isupper(c));
+	ft_printf("Hello World!\n And hello %s", "Hugo");
+	return (0);
 }

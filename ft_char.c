@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_char.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 16:04:54 by hthomas           #+#    #+#             */
-/*   Updated: 2019/11/29 14:18:22 by hthomas          ###   ########.fr       */
+/*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
+/*   Updated: 2019/11/29 18:00:06 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_isupper(int c)
+void ft_char(const char *format, va_list arg, t_sp sp)
 {
-	return (c <= 'Z' && c >= 'A');
-}
-
-int	ft_islower(int c)
-{
-	return (c <= 'z' && c >= 'a');
-}
-
-int	ft_isalpha(int c)
-{
-	return (ft_islower(c) || ft_isupper(c));
+	sp.c = va_arg(arg, char);
 }

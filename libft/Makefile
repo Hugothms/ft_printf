@@ -6,7 +6,7 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/04 11:49:24 by hthomas           #+#    #+#              #
-#    Updated: 2019/11/27 17:16:21 by hthomas          ###   ########.fr        #
+#    Updated: 2019/11/29 15:43:25 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,10 @@ SRCS 		=	ft_memset.c			\
 				ft_strlcpy.c		\
 				ft_strlcat.c		\
 				ft_atoi.c			\
+				ft_atoi_base.c		\
+				ft_itoa.c			\
+				ft_putnbr_base.c	\
+				ft_convert_base.c	\
 				ft_calloc.c			\
 				ft_strdup.c			\
 				ft_substr.c			\
@@ -47,7 +51,6 @@ SRCS 		=	ft_memset.c			\
 				ft_strmapi.c		\
 				ft_split.c			\
 				ft_strtrim.c		\
-				ft_itoa.c			\
 				ft_strjoin.c		\
 				ft_lstnew.c			\
 				ft_lstadd_front.c	\
@@ -61,6 +64,7 @@ SRCS 		=	ft_memset.c			\
 				ft_putchar.c		\
 				ft_putstr.c			\
 				ft_putnbr.c			\
+				ft_putnbr_base.c			\
 				ft_strcmp.c			\
 				ft_strstr.c			\
 				ft_strcat.c			\
