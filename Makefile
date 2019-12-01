@@ -6,15 +6,15 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 13:45:08 by hthomas           #+#    #+#              #
-#    Updated: 2019/12/01 15:37:45 by hthomas          ###   ########.fr        #
+#    Updated: 2019/12/01 19:11:22 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 C = gcc
-CFLAGS = -Wall -Werror -Wextra -pedantic -g -fsanitize=address
-LDFLAGS =  -fsanitize=address
+#CFLAGS += -Wall -Werror -Wextra -pedantic -g -fsanitize=address
+#LDFLAGS +=  -fsanitize=address
 
-SRC = 	ft_printf.c			\
+SRCS = 	ft_printf.c			\
 		s_printf_utils.c	\
 		ft_char.c			\
 		ft_hex.c			\
@@ -23,25 +23,26 @@ SRC = 	ft_printf.c			\
 		ft_string.c			\
 		ft_unsigned_int.c
 
-OBJ = $(SRC:.c=.o)
+OBJS = $(SRCS:.c=.o)
 LIB = libftprintf.a
 LIBFT = libft.a
 LIBFTDIR = libft/
 MAKE = make
+EXEC = test.out
 
 all:	$(LIB)
 
-$(LIB): $(LIBFT) $(OBJ)
-	ar rc $(LIB) $(LIBFT) ${OBJS}
-	ranlib $(LIB)
+$(LIB): $(LIBFT) $(OBJS)
+	ar rc $@ $^
+	ranlib $@
 
-$(LIBFT):
+$(LIBFT): $(LIBFTDIR)*.c
 	cd $(LIBFTDIR) && $(MAKE)
-	mv $(LIBFTDIR)$(LIBFT) .
+	mv $(LIBFTDIR)$@ .
 
 clean:
 	cd $(LIBFTDIR) && $(MAKE) clean
-	rm -rf $(OBJ) $(LIBFT)
+	rm -rf $(OBJS) $(LIBFT)
 
 fclean:	clean
 	cd $(LIBFTDIR) && $(MAKE) fclean
@@ -49,7 +50,10 @@ fclean:	clean
 
 re:		fclean all
 
-test: $(LIBFT)
-	$(C) $(SRC) main.c $(LIBFT)
-	#clear
-	./a.out
+
+
+test: $(EXEC)
+	./$<
+
+$(EXEC): $(SRCS) main.c $(LIBFT)
+	$(C) -o $@ $^

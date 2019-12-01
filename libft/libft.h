@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:02:45 by hthomas           #+#    #+#             */
-/*   Updated: 2019/11/29 15:41:59 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/01 19:05:38 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stddef.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 
 typedef struct		s_list
 {
@@ -28,6 +29,7 @@ int					ft_atoi(const char *str);
 int					check_base(char *base);
 int					ft_atoi_base(char *str, char *base);
 char				*ft_convert_base(char *nbr, char *base_from, char *base_to);
+int					ft_count_len_nbr(int n);
 char				*ft_itoa(int nbr);
 int					ft_islower(int c);
 int					ft_isupper(int c);
@@ -42,9 +44,13 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putchar(int c);
 void				ft_putnbr_fd(int nb, int fd);
 void				ft_putnbr(int nb);
+void				ft_putnbr_unsigned_fd(unsigned int nb, int fd);
+void				ft_putnbr_unsigned(unsigned int nb);
 void				ft_putstr_fd(const char *str, int fd);
 void				ft_putstr(const char *str);
 void				ft_putendl_fd(char const *s, int fd);
+void				ft_puthex(long long hex);
+int					ft_count_len_hex(long long hex);
 size_t				ft_strlen(const char *str);
 char				*ft_strdup(const char *src);
 char				*ft_strcpy(char *dest, const char *src);

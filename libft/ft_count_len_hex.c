@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_string.c                                        :+:      :+:    :+:   */
+/*   ft_count_len_hex.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/01 18:34:43 by hthomas          ###   ########.fr       */
+/*   Created: 2019/12/01 16:53:02 by hthomas           #+#    #+#             */
+/*   Updated: 2019/12/01 19:11:24 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-void ft_string(const char *format, va_list arg, t_sp sp)
+int			ft_count_len_hex(long long hex)
 {
-	sp.s = va_arg(arg, char*);
-	ft_putstr(sp.s);
-	sp.len += ft_strlen(sp.s);
+	int	res;
+
+	res = 0;
+	if (hex< 0)
+		res++;
+	if (hex== 0)
+		return(1);
+	while (hex)
+	{
+		res++;
+		hex/= 10;
+	}
+	return(res);
 }

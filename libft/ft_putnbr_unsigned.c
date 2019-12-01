@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_string.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_unsigned.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/01 18:34:43 by hthomas          ###   ########.fr       */
+/*   Created: 2019/08/29 08:30:46 by hthomas           #+#    #+#             */
+/*   Updated: 2019/12/01 18:27:01 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void ft_string(const char *format, va_list arg, t_sp sp)
+void	ft_putnbr_unsigned(unsigned int nb)
 {
-	sp.s = va_arg(arg, char*);
-	ft_putstr(sp.s);
-	sp.len += ft_strlen(sp.s);
+	ft_putnbr_unsigned_fd(nb, 1);
 }

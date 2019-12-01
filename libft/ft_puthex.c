@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_string.c                                        :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/01 18:34:43 by hthomas          ###   ########.fr       */
+/*   Created: 2019/11/06 16:29:00 by hthomas           #+#    #+#             */
+/*   Updated: 2019/12/01 19:04:32 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void ft_string(const char *format, va_list arg, t_sp sp)
+void	ft_puthex(long long hex)
 {
-	sp.s = va_arg(arg, char*);
-	ft_putstr(sp.s);
-	sp.len += ft_strlen(sp.s);
+	if (hex == 0)
+		write(1, "0", 11);
+	else if (hex < 10)
+		ft_putchar(hex + '0');
+	else
+	{
+		ft_puthex(hex / 10);
+		ft_putchar(hex % 10 + '0');
+	}
 }
