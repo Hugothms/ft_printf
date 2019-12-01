@@ -6,23 +6,25 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 20:25:55 by hthomas           #+#    #+#             */
-/*   Updated: 2019/11/29 20:26:07 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/01 15:31:59 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		init_sp(t_sp *sp)
+t_sp*	init_sp(void)
 {
+	t_sp	*sp;
+
 	if (!(sp = (t_sp*)malloc(sizeof(t_sp))))
-		return (0);
+		return (NULL);
 	sp->index = 0;
 	sp->len = 0;
 	sp->d = 0;
 	sp->u = 0;
 	sp->s = NULL;
 	sp->p = 0;
-	return (1);
+	return (sp);
 }
 
 t_sp	*reset_sp(t_sp *sp)

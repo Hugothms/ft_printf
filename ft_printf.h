@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:44:08 by hthomas           #+#    #+#             */
-/*   Updated: 2019/11/29 20:23:26 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/01 15:32:11 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void 			ft_integer(const char *format, va_list arg, t_sp sp);
 void 			ft_unsigned_int(const char *format, va_list arg, t_sp sp);
 void 			ft_hex(const char *format, va_list arg, t_sp sp);
 
-int				init_sp(t_sp *sp);
+t_sp			*init_sp(void);
 t_sp			*reset_sp(t_sp *sp);
 void			free_sp(t_sp *sp);
 

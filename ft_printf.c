@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:42:33 by hthomas           #+#    #+#             */
-/*   Updated: 2019/11/29 20:25:26 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/01 15:33:22 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,8 @@ int		ft_printf(const char *fmt, ...)
 	t_sp	*sp;
 
 	va_start(arg, fmt);
-	if(!init_sp(sp))
+	if(!(sp = init_sp()))
 		return (-1);
-	printf("IC|%d|CI\n", sp->index);
-	ft_putstr("yo\n");
 	while (fmt[sp->index])
 	{
 		reset_sp(sp);

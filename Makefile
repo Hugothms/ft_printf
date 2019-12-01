@@ -6,7 +6,7 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 13:45:08 by hthomas           #+#    #+#              #
-#    Updated: 2019/11/29 20:27:01 by hthomas          ###   ########.fr        #
+#    Updated: 2019/12/01 15:37:45 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,31 +25,31 @@ SRC = 	ft_printf.c			\
 
 OBJ = $(SRC:.c=.o)
 LIB = libftprintf.a
-LBLIBS = libft.a
-LIBDIR = libft/
+LIBFT = libft.a
+LIBFTDIR = libft/
 MAKE = make
 
 all:	$(LIB)
 
-$(LIB): makelibft $(OBJ)
-	ar rc $(LIB) $(LBLIBS) ${OBJS}
+$(LIB): $(LIBFT) $(OBJ)
+	ar rc $(LIB) $(LIBFT) ${OBJS}
 	ranlib $(LIB)
 
-makelibft:
-	cd libft && $(MAKE)
-	mv $(LIBDIR)$(LBLIBS) .
+$(LIBFT):
+	cd $(LIBFTDIR) && $(MAKE)
+	mv $(LIBFTDIR)$(LIBFT) .
 
 clean:
-	cd libft && $(MAKE) clean
-	rm -rf $(OBJ) $(LBLIBS)
+	cd $(LIBFTDIR) && $(MAKE) clean
+	rm -rf $(OBJ) $(LIBFT)
 
 fclean:	clean
-	cd libft && $(MAKE) fclean
+	cd $(LIBFTDIR) && $(MAKE) fclean
 	rm -f $(LIB)
 
 re:		fclean all
 
-test: makelibft
-	$(C) $(SRC) main.c $(LBLIBS)
+test: $(LIBFT)
+	$(C) $(SRC) main.c $(LIBFT)
 	#clear
 	./a.out
