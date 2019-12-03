@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_zeros.c                                     :+:      :+:    :+:   */
+/*   ft_atoi_no_sign.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/03 15:26:20 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/03 17:37:01 by hthomas          ###   ########.fr       */
+/*   Created: 2019/11/04 16:04:54 by hthomas           #+#    #+#             */
+/*   Updated: 2019/12/03 18:24:38 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"ft_printf.h"
-
-void	ft_put_zeros(int width, t_sp *sp, int len)
+int	ft_atoi_no_sign(const char *nptr)
 {
-	int	i;
+	int	res;
 
-	i = width - len;
-	if (i < 0)
-		return ;
-	while (i--)
+	res = 0;
+	while ((*nptr >= '\t' && *nptr <= '\r') || *nptr == ' ')
+		nptr++;
+	while (*nptr >= '0' && *nptr <= '9')
 	{
-		ft_putchar('0');
-		sp->len++;
+		res *= 10;
+		res += *nptr++ - '0';
 	}
+	return (res);
 }

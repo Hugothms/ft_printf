@@ -6,7 +6,7 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 13:45:08 by hthomas           #+#    #+#              #
-#    Updated: 2019/12/03 15:31:31 by hthomas          ###   ########.fr        #
+#    Updated: 2019/12/03 18:24:24 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ SRCS = 	ft_printf.c			\
 		ft_pointer.c		\
 		ft_string.c			\
 		ft_unsigned_int.c	\
-		ft_put_zeros.c
+		ft_put_zeros.c		\
+		ft_atoi_no_sign.c
+
 
 OBJS = $(SRCS:.c=.o)
 LIB = libftprintf.a

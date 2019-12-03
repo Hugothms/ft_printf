@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_zeros.c                                     :+:      :+:    :+:   */
+/*   ft_chardup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/03 15:26:20 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/03 17:37:01 by hthomas          ###   ########.fr       */
+/*   Created: 2019/11/04 16:04:54 by hthomas           #+#    #+#             */
+/*   Updated: 2019/12/03 17:55:35 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"ft_printf.h"
+#include "libft.h"
 
-void	ft_put_zeros(int width, t_sp *sp, int len)
+char	*ft_chardup(char c)
 {
-	int	i;
+	char	*cpy;
 
-	i = width - len;
-	if (i < 0)
-		return ;
-	while (i--)
-	{
-		ft_putchar('0');
-		sp->len++;
-	}
+	if (!(cpy = malloc((1 + 1) * sizeof(char))))
+		return (0);
+	ft_memcpy(cpy, &c, 1);
+	cpy[1] = '\0';
+	return (cpy);
 }

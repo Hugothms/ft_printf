@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:44:08 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/03 15:35:39 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/03 17:37:10 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <limits.h>
 
-typedef struct	s_printf
+typedef struct		s_printf
 {
 	int				index;
 	int				len;
@@ -27,13 +27,15 @@ typedef struct	s_printf
 	char			*s;
 	long long		p;
 	unsigned int	h;
-}				t_sp;
+}					t_sp;
 
-typedef struct	s_flags
+typedef struct		s_flags
 {
-	char			flag;
-	int				size;
-}				t_f;
+	int				zb;
+	int				za;
+	int				width;
+	int				pr;
+}					t_f;
 
 int				ft_printf(const char *format, ...);
 
@@ -47,7 +49,10 @@ void			ft_hex(const char *format, va_list arg, t_sp *sp, int upper);
 t_sp			*init_sp(void);
 t_sp			*reset_sp(t_sp *sp);
 void			free_sp(t_sp *sp);
+t_f				*init_f(void);
 
-void			ft_put_zeros(int size, t_sp *sp);
+void			ft_put_zeros(int size, t_sp *sp, int len);
+
+int				ft_atoi_no_sign(const char *nptr);
 
 #endif

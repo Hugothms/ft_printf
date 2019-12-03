@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:02:45 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/03 15:49:59 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/03 18:10:54 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int					ft_atoi_base(char *str, char *base);
 char				*ft_convert_base(char *nbr, char *base_from, char *base_to);
 int					ft_count_len_nbr(int n);
 char				*ft_itoa(int nbr);
+char				*ft_uitoa(unsigned int n);
+char				*ft_ulltoa(unsigned long long n);
 int					ft_islower(int c);
 int					ft_isupper(int c);
 int					ft_isalpha(int c);
@@ -53,6 +55,7 @@ void				ft_putendl_fd(char const *s, int fd);
 void				ft_puthex(unsigned int hex, int upper);
 void				ft_putpointer(unsigned long long pointer);
 int					ft_count_len_hex(unsigned long long hex);
+char				*ft_chardup(char const c);
 size_t				ft_strlen(const char *str);
 char				*ft_strdup(const char *src);
 char				*ft_strcpy(char *dest, const char *src);

@@ -6,13 +6,13 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 20:25:55 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/03 14:48:33 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/03 16:36:35 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_sp*	init_sp(void)
+t_sp	*init_sp(void)
 {
 	t_sp	*sp;
 
@@ -45,4 +45,17 @@ void	free_sp(t_sp *sp)
 	if(sp->s)
 		free(sp->s);
 	free(sp);
+}
+
+t_f		*init_f(void)
+{
+	t_f	*f;
+
+	if (!(f = (t_f*)malloc(sizeof(t_f))))
+		return (NULL);
+	f->zb = 0;
+	f->za = 0;
+	f->pr = 0;
+	f->width = 0;
+	return (f);
 }
