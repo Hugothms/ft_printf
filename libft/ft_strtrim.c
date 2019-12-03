@@ -3,27 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hthomas <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 16:30:13 by hthomas           #+#    #+#             */
-/*   Updated: 2019/11/06 16:30:14 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/02 18:26:39 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	in_charset(char c, char const *charset)
-{
-	int	i;
-
-	i = 0;
-	while (charset[i])
-	{
-		if (c == charset[i++])
-			return (1);
-	}
-	return (0);
-}
 
 static int	count_size(char const *s1, char const *set)
 {

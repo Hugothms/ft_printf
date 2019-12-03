@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:02:45 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/01 19:05:38 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/03 15:49:59 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int					ft_islower(int c);
 int					ft_isupper(int c);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
+int					ft_issign(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
@@ -49,8 +50,9 @@ void				ft_putnbr_unsigned(unsigned int nb);
 void				ft_putstr_fd(const char *str, int fd);
 void				ft_putstr(const char *str);
 void				ft_putendl_fd(char const *s, int fd);
-void				ft_puthex(long long hex);
-int					ft_count_len_hex(long long hex);
+void				ft_puthex(unsigned int hex, int upper);
+void				ft_putpointer(unsigned long long pointer);
+int					ft_count_len_hex(unsigned long long hex);
 size_t				ft_strlen(const char *str);
 char				*ft_strdup(const char *src);
 char				*ft_strcpy(char *dest, const char *src);
@@ -67,6 +69,7 @@ char				*ft_strrchr(const char *s, int c);
 char				*ft_strmap(char const *s, char (*f)(char));
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char				*ft_substr(char const *s, unsigned int start, size_t len);
+int					in_charset(char c, char const *charset);
 char				**ft_split(char const *s, char c1);
 char				**ft_nsplit(const char *str, char *charset);
 char				*ft_strjoin(char const *s1, char const *s2);

@@ -6,13 +6,13 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 08:16:10 by hthomas           #+#    #+#             */
-/*   Updated: 2019/11/13 12:30:13 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/02 18:26:36 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		in_charset(char c, char *charset)
+int		in_charset(char c, char const *charset)
 {
 	int	i_charset;
 

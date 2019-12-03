@@ -6,7 +6,7 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/04 11:49:24 by hthomas           #+#    #+#              #
-#    Updated: 2019/12/01 19:07:28 by hthomas          ###   ########.fr        #
+#    Updated: 2019/12/03 15:51:13 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS 		=	ft_memset.c				\
 				ft_strlen.c				\
 				ft_isalpha.c			\
 				ft_isdigit.c			\
+				ft_issign.c				\
 				ft_isalnum.c			\
 				ft_isascii.c			\
 				ft_isprint.c			\
@@ -49,6 +50,7 @@ SRCS 		=	ft_memset.c				\
 				ft_putnbr_unsigned_fd.c	\
 				ft_putnbr_unsigned.c	\
 				ft_puthex.c				\
+				ft_putpointer.c			\
 				ft_count_len_hex.c		\
 				ft_putchar_fd.c			\
 				ft_putstr_fd.c			\
@@ -75,7 +77,6 @@ SRCS 		=	ft_memset.c				\
 				ft_strmap.c				\
 				ft_nsplit.c				\
 				ft_strjoin_sep.c
-
 
 all:		$(NAME)
 

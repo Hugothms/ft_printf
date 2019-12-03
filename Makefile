@@ -6,13 +6,13 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 13:45:08 by hthomas           #+#    #+#              #
-#    Updated: 2019/12/01 19:11:22 by hthomas          ###   ########.fr        #
+#    Updated: 2019/12/03 15:31:31 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 C = gcc
-#CFLAGS += -Wall -Werror -Wextra -pedantic -g -fsanitize=address
-#LDFLAGS +=  -fsanitize=address
+CFLAGS += -Wall -Werror -Wextra -pedantic -g -fsanitize=address
+LDFLAGS +=  -fsanitize=address
 
 SRCS = 	ft_printf.c			\
 		s_printf_utils.c	\
@@ -21,7 +21,8 @@ SRCS = 	ft_printf.c			\
 		ft_integer.c		\
 		ft_pointer.c		\
 		ft_string.c			\
-		ft_unsigned_int.c
+		ft_unsigned_int.c	\
+		ft_put_zeros.c
 
 OBJS = $(SRCS:.c=.o)
 LIB = libftprintf.a
@@ -36,7 +37,7 @@ $(LIB): $(LIBFT) $(OBJS)
 	ar rc $@ $^
 	ranlib $@
 
-$(LIBFT): $(LIBFTDIR)*.c
+$(LIBFT): $(LIBFTDIR)*.c $(LIBFTDIR)*.h
 	cd $(LIBFTDIR) && $(MAKE)
 	mv $(LIBFTDIR)$@ .
 
@@ -56,4 +57,4 @@ test: $(EXEC)
 	./$<
 
 $(EXEC): $(SRCS) main.c $(LIBFT)
-	$(C) -o $@ $^
+	$(C) $(LDFLAGS) -o $@ $^

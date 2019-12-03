@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_string.c                                        :+:      :+:    :+:   */
+/*   ft_putpointer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/03 14:46:14 by hthomas          ###   ########.fr       */
+/*   Created: 2019/11/06 16:29:00 by hthomas           #+#    #+#             */
+/*   Updated: 2019/12/02 21:01:46 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	ft_string(const char *format, va_list arg, t_sp *sp)
+void	ft_putpointer(unsigned long long pointer)
 {
-	sp->s = va_arg(arg, char*);
-	sp->len += ft_strlen(sp->s);
+	if (pointer < 16)
+		ft_putchar(pointer + ((pointer < 10) ? '0' : 'a' - 10));
+	else
+	{
+		ft_putpointer(pointer / 16);
+		ft_putchar(pointer % 16 + (pointer % 16 < 10 ? '0' : 'a' - 10));
+	}
 }
+
