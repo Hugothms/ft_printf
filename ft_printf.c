@@ -19,21 +19,20 @@ char	ft_conversion(const char *fmt, va_list arg, t_sp *sp)
 	// int	len;
 
 	// len = sp->len;
-	sp->index++;
 	if (fmt[sp->index] == 'c')
-		ft_char(fmt, arg, sp);
+		return(ft_char(arg, sp));
 	else if (fmt[sp->index] == 's')
-		ft_string(fmt, arg, sp);
+		return(ft_string(arg, sp));
 	else if (fmt[sp->index] == 'p')
-		ft_pointer(fmt, arg, sp);
+		return(ft_pointer(arg, sp));
 	else if (fmt[sp->index] == 'd' || fmt[sp->index] == 'i')
-		ft_integer(fmt, arg, sp);
+		return(ft_integer(arg, sp));
 	else if (fmt[sp->index] == 'u')
-		ft_unsigned_int(fmt, arg, sp);
+		return(ft_unsigned_int(arg, sp));
 	else if (fmt[sp->index] == 'x')
-		ft_hex(fmt, arg, sp, 0);
+		return(ft_hex(arg, sp));
 	else if (fmt[sp->index] == 'X')
-		ft_hex(fmt, arg, sp, 1);
+		return(ft_hex(arg, sp));
 	else if (fmt[sp->index] == '%')
 	{
 		sp->i = '%';
@@ -45,15 +44,18 @@ char	ft_conversion(const char *fmt, va_list arg, t_sp *sp)
 	// return (sp->len - len);
 }
 
-char	*ft_show(t_sp *sp, char type)
+char	*ft_get_str_from_struct(t_sp *sp, char type)
 {
 	if (type == 'c')
+	{
+		// printf("y");
 		return (ft_chardup(sp->i));
+	}
 	else if (type == 's')
 		return (ft_strdup(sp->s));
 	else if (type == 'p')
 		return (ft_strjoin(ft_strdup("0x"), ft_ulltoa(sp->p)));
-	else if (type == 'd' || type == 'i')
+	else if (type == 'i')
 		return (ft_itoa(sp->i));
 	else if (type == 'u')
 		return (ft_uitoa(sp->u));
@@ -66,39 +68,6 @@ char	*ft_show(t_sp *sp, char type)
 	return (NULL);
 }
 
-void	ft_get_flags(const char *fmt, t_sp *sp, t_f	*f)
-{
-	while (in_charset(fmt[sp->index], "-0"))
-	{
-		if (fmt[sp->index] == '-' && !f->za)
-		{
-			f->za = 1;
-			f->zb = 0;
-		}
-		else if (fmt[sp->index] == '0' && !f->zb && !f->za)
-			f->zb = 1;
-		sp->index++;
-	}
-}
-
-void	ft_get_width(const char *fmt, t_sp *sp, t_f	*f)
-{
-	f->width = ft_atoi_no_sign(&fmt[sp->index]);
-	while (ft_isdigit(fmt[sp->index]))
-		sp->index++;
-}
-
-void	ft_get_precision(const char *fmt, t_sp *sp, t_f	*f)
-{
-	if (fmt[sp->index] == '.')
-	{
-		sp->index++;
-		f->pr = ft_atoi_no_sign(&fmt[sp->index]);
-		while (ft_isdigit(fmt[sp->index]))
-			sp->index++;
-	}
-}
-
 int		ft_printf_continue(const char *fmt, va_list arg, t_sp *sp)
 {
 	t_f		*f;
@@ -106,27 +75,23 @@ int		ft_printf_continue(const char *fmt, va_list arg, t_sp *sp)
 	char	*str;
 
 	sp->index++;
-	// printf("\ninital:|%s|\n", &fmt[sp->index]);
 	f = init_f();
 	ft_get_flags(fmt, sp, f);
-	// printf("\nflag0:%d\n", f->zb);
-	// printf("|%s|\n", &fmt[sp->index]);
 	ft_get_width(fmt, sp, f);
 	//ft_get_precision(fmt, sp, f);
-	// printf("\n|%s|\n", &fmt[sp->index]);
 	type = ft_conversion(fmt, arg, sp);
+	str = ft_get_str_from_struct(sp, type);
 	if (f->zb)
 	{
-		// printf("on est la\n");
+		//printf("str: |%s|\n", str);
 		ft_put_zeros(f->width, sp, ft_strlen(str));
 	}
-	// printf("ok\n");
-	str = ft_show(sp, type);
+	ft_putstr(str);
 	if (f->za)
 	{
-		// printf("on est ici\n");
-		ft_put_zeros(f->width, sp, ft_strlen(str));
+		ft_put_spaces(f->width, sp, ft_strlen(str));
 	}
+	free(str);
 	return (0);
 }
 

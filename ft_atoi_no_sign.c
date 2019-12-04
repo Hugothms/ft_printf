@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 16:04:54 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/03 18:24:38 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/04 16:42:01 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@ int	ft_atoi_no_sign(const char *nptr)
 	int	res;
 
 	res = 0;
-	while ((*nptr >= '\t' && *nptr <= '\r') || *nptr == ' ')
-		nptr++;
 	while (*nptr >= '0' && *nptr <= '9')
 	{
 		res *= 10;

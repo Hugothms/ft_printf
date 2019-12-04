@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 20:25:55 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/03 16:36:35 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/04 15:54:01 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,7 @@ t_sp	*init_sp(void)
 
 	if (!(sp = (t_sp*)malloc(sizeof(t_sp))))
 		return (NULL);
-	sp->index = 0;
-	sp->len = 0;
-	sp->i = 0;
-	sp->u = 0;
-	sp->s = NULL;
-	sp->p = 0;
-	sp->h = 0;
+	ft_bzero(sp,sizeof(*sp));
 	return (sp);
 }
 
@@ -42,8 +36,8 @@ t_sp	*reset_sp(t_sp *sp)
 
 void	free_sp(t_sp *sp)
 {
-	if(sp->s)
-		free(sp->s);
+	// if(sp->s)
+	// 	free(sp->s);
 	free(sp);
 }
 

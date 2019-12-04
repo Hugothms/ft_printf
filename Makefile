@@ -6,7 +6,7 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 13:45:08 by hthomas           #+#    #+#              #
-#    Updated: 2019/12/03 18:24:24 by hthomas          ###   ########.fr        #
+#    Updated: 2019/12/04 16:34:53 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS = 	ft_printf.c			\
 		ft_string.c			\
 		ft_unsigned_int.c	\
 		ft_put_zeros.c		\
+		ft_flags.c			\
 		ft_atoi_no_sign.c
 
 
@@ -55,8 +56,10 @@ re:		fclean all
 
 
 
+HEADER = ft_printf.h
+
 test: $(EXEC)
 	./$<
 
-$(EXEC): $(SRCS) main.c $(LIBFT)
-	$(C) $(LDFLAGS) -o $@ $^
+$(EXEC): $(SRCS) main.c $(LIBFT) $(HEADER)
+	$(C) $(CFLAGS) -I$(HEADER) -o $@ $(SRCS) main.c $(LIBFT)

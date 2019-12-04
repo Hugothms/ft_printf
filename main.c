@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:40:45 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/03 18:29:38 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/04 16:32:03 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(void)
 	ft_printf("\n\n");
 	ft_printf("##############################   CHAR   ##############################\n");
 	char c = 32;
+	ft_printf("A char: %c\n", 'A');
 	while (c < 127)
 	{
 		ft_printf("%c\t", c);
@@ -42,19 +43,22 @@ int	main(void)
 	printf("An integer: %d\n", -32);
 	ft_printf("Zero: %d\n", 0);
 	printf("Zero: %d\n", 0);
-	ft_printf("Precision 8: %08d\n",42);
-	printf("Precision 8: %08d\n",42);
-	ft_printf("Precision 1: %01d\n",42);
-	printf("Precision 1: %01d\n",42);
-	ft_printf("Precision 0: %00d\n",42);
-	printf("Precision 0: %00d\n",42);
+	ft_printf("Width 1: %01d\n",42);
+	printf("Width 1: %01d\n",42);
+	ft_printf("Width 0: %00d\n",42);
+	printf("Width 0: %00d\n",42);
 	ft_printf("Min integer: %d\n", INT_MIN);
 	printf("Min integer: %d\n", INT_MIN);
 	ft_printf("Max integer: %d\n", INT_MAX);
 	printf("Max integer: %d\n", INT_MAX);
 	int d = 31, m = 8, y = 1996;
-	ft_printf("I am born the: %d/%d/%d\n", d, m, y);
-	printf("I am born the: %d/%d/%d\n", d, m, y);
+	ft_printf("I am born the: %02d/%02d/%04d\n", d, m, y);
+	printf("I am born the: %02d/%02d/%04d\n", d, m, y);
+	ft_printf("I am born the: %-4d/%-4d/%-4d\n", d, m, y);
+	printf("I am born the: %-4d/%-4d/%-4d\n", d, m, y);
+
+	ft_printf("|%-45d|\n", 42);
+	printf("|%-45d|\n", 42);
 
 	// ! Unsigned integer
 	ft_printf("\n\n");
