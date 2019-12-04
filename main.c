@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:40:45 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/04 16:32:03 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/04 17:31:10 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,5 +127,5 @@ int	main(void)
 // x et X ne prennent que 8 bits
 
 // * CONVERSIONS:	c	s	p	d	i	u	x	X	%
-// * ANY COMB:		-0.*
+// * ANY COMB:		[-0number][.number]	'*'
 // * F. AUTORISÉES:	malloc, free, write, va_start, va_arg, va_copy, va_end

@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:44:08 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/04 16:37:25 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/04 20:26:24 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct		s_printf
 	int				i;
 	unsigned int	u;
 	char			*s;
-	long long		p;
+	long 			p;
 	unsigned int	h;
 }					t_sp;
 

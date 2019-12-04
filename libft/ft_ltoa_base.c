@@ -1,20 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_base.c                                  :+:      :+:    :+:   */
+/*   ft_ltoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 08:15:50 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/04 20:51:18 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/04 21:01:34 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+int			ft_count_len_nbr_l(long n, char *base_to)
+{
+	int		res;
+
+	res = 0;
+	if (n < 0)
+		res++;
+	if (n == 0)
+		return (1);
+	while (n)
+	{
+		res++;
+		n /= ft_strlen(base_to);
+	}
+	return (res);
+}
+
 char			*fill_positivenbr_base(long nbr, char *base, char *res, int i)
 {
-	int			size;
+	int		size;
 
 	size = 0;
 	while (base[size])
@@ -29,8 +46,8 @@ char			*fill_positivenbr_base(long nbr, char *base, char *res, int i)
 
 char			*fill_nbr_base(char *res, long nbr, char *base, int sign)
 {
-	int			i;
-	int			size;
+	int		i;
+	int		size;
 
 	size = 0;
 	while (base[size])
@@ -62,22 +79,20 @@ char			*ft_strrev_minus_1(char *res)
 	return (res);
 }
 
-char			*ft_convert_base(char *nbr, char *base_from, char *base_to)
+char			*ft_ltoa_base(long nb, char *base_to)
 {
 	char		*res;
-	long		nb;
 	int			sign;
 
-	if (!check_base(base_to) || !check_base(base_from))
+	if (!check_base(base_to))
 		return (0);
-	nb = ft_atoi_base(nbr, base_from);
 	sign = 1;
 	if (nb < 0)
 	{
 		nb *= -1;
 		sign = -1;
 	}
-	if (!(res = malloc((ft_count_len_nbr(nb) + 1) * sizeof(char))))
+	if (!(res = malloc((ft_count_len_nbr_l(nb, base_to)) * sizeof(char))))
 		return (0);
 	fill_nbr_base(res, nb, base_to, sign);
 	return (ft_strrev_minus_1(res));

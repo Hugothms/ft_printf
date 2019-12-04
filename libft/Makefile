@@ -6,7 +6,7 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/04 11:49:24 by hthomas           #+#    #+#              #
-#    Updated: 2019/12/03 18:11:57 by hthomas          ###   ########.fr        #
+#    Updated: 2019/12/04 20:44:28 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,8 @@ SRCS 		=	ft_memset.c				\
 				ft_atoi_base.c			\
 				ft_itoa.c				\
 				ft_uitoa.c				\
-				ft_ulltoa.c				\
+				ft_ltoa.c				\
+				ft_ltoa_base.c			\
 				ft_putnbr_base.c		\
 				ft_convert_base.c		\
 				ft_calloc.c				\

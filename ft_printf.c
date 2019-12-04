@@ -54,7 +54,7 @@ char	*ft_get_str_from_struct(t_sp *sp, char type)
 	else if (type == 's')
 		return (ft_strdup(sp->s));
 	else if (type == 'p')
-		return (ft_strjoin(ft_strdup("0x"), ft_ulltoa(sp->p)));
+		return (ft_strjoin(ft_strdup("0x"), ft_ltoa_base(sp->p, "0123456789abcdef")));
 	else if (type == 'i')
 		return (ft_itoa(sp->i));
 	else if (type == 'u')
