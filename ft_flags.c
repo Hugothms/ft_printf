@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 16:07:56 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/04 16:08:34 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/05 13:06:45 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,36 @@ void	ft_get_flags(const char *fmt, t_sp *sp, t_f	*f)
 	}
 }
 
-void	ft_get_width(const char *fmt, t_sp *sp, t_f	*f)
+void	ft_get_width(const char *fmt, t_sp *sp, t_f	*f, va_list arg)
 {
-	f->width = ft_atoi_no_sign(&fmt[sp->index]);
-	while (ft_isdigit(fmt[sp->index]))
+	if (fmt[sp->index] == '*')
+	{
+		f->width = va_arg(arg, int);
 		sp->index++;
+	}
+	else
+	{
+		f->width = ft_atoi_no_sign(&fmt[sp->index]);
+		while (ft_isdigit(fmt[sp->index]))
+			sp->index++;
+	}
 }
 
-void	ft_get_precision(const char *fmt, t_sp *sp, t_f	*f)
+void	ft_get_precision(const char *fmt, t_sp *sp, t_f	*f, va_list arg)
 {
 	if (fmt[sp->index] == '.')
 	{
 		sp->index++;
-		f->pr = ft_atoi_no_sign(&fmt[sp->index]);
-		while (ft_isdigit(fmt[sp->index]))
+		if (fmt[sp->index] == '*')
+		{
+			f->pr = va_arg(arg, int);
 			sp->index++;
+		}
+		else
+		{
+			f->pr = ft_atoi_no_sign(&fmt[sp->index]);
+			while (ft_isdigit(fmt[sp->index]))
+				sp->index++;
+		}
 	}
 }

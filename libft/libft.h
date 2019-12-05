@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:02:45 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/04 20:44:13 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/05 11:28:52 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ char				*ft_itoa(int nbr);
 char				*ft_uitoa(unsigned int n);
 char				*ft_ltoa(long n);
 char				*ft_ltoa_base(long nb, char *base_to);
+char				*ft_uitoa_base(unsigned int nb, char *base_to);
 int					ft_islower(int c);
 int					ft_isupper(int c);
 int					ft_isalpha(int c);

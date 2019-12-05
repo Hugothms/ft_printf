@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:40:45 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/04 17:31:10 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/05 16:32:10 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include<stdio.h>
 int	main(void)
 {
+
 	// ! Char
 	ft_printf("\n\n");
 	ft_printf("##############################   CHAR   ##############################\n");
@@ -118,10 +119,52 @@ int	main(void)
 		hex++;
 	}
 
+	// ! Tests
+	ft_printf("\n\n");
+	ft_printf("############################## TESTS ##############################\n");
+	printf("\t\t05.8d\n");
+	printf("|%05.8d|\n", 420);
+	ft_printf("|%05.8d|\n\n", 420);
+	printf("\t\t0.8d\n");
+	printf("|%0.8d|\n", 420);
+	ft_printf("|%0.8d|\n\n", 420);
+	printf("\t\t08.5d\n");
+	printf("|%08.5d|\n", 420);
+	ft_printf("|%08.5d|\n\n", 420);
+	printf("\t\t-5.8d\n");
+	printf("|%-5.8d|\n", 420);
+	ft_printf("|%-5.8d|\n\n", 420);
+	printf("\t\t-8.5d\n");
+	printf("|%-8.5d|\n", 420);
+	ft_printf("|%-8.5d|\n\n\n\n", 420);
+
+
+	printf("\t\t0*.8d\n");
+	printf("|%0*.8d|\n", 5, 420);
+	ft_printf("|%0*.8d|\n\n", 5, 420);
+	printf("\t\t0.8d\n");
+	printf("|%0.8d|\n", 420);
+	ft_printf("|%0.8d|\n\n", 420);
+	printf("\t\t0*.5d\n");
+	printf("|%0*.5d|\n", 8, 420);
+	ft_printf("|%0*.5d|\n\n", 8, 420);
+	printf("\t\t-*.8d\n");
+	printf("|%-*.8d|\n", 5, 420);
+	ft_printf("|%-*.8d|\n\n", 5, 420);
+	printf("\t\t-*.5d\n");
+	printf("|%-*.5d|\n", 8, 420);
+	ft_printf("|%-*.5d|\n\n", 8, 420);
 
 
 	return (0);
 }
+
+//For integer specifiers (d, i, o, u, x, X): precision specifies
+//the minimum number of digits to be written.
+//If the value to be written is shorter than this number,
+//the result is padded with leading zeros.
+//The value is not truncated even if the result is longer.
+//A precision of 0 means that no character is written for the value 0.
 
 // p doit afficher les zero avant
 // x et X ne prennent que 8 bits

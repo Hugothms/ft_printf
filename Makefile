@@ -6,7 +6,7 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 13:45:08 by hthomas           #+#    #+#              #
-#    Updated: 2019/12/04 16:34:53 by hthomas          ###   ########.fr        #
+#    Updated: 2019/12/05 16:36:46 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,14 +15,14 @@ CFLAGS += -Wall -Werror -Wextra -pedantic -g -fsanitize=address
 LDFLAGS +=  -fsanitize=address
 
 SRCS = 	ft_printf.c			\
-		s_printf_utils.c	\
+		ft_s_printf_utils.c	\
 		ft_char.c			\
 		ft_hex.c			\
 		ft_integer.c		\
 		ft_pointer.c		\
 		ft_string.c			\
 		ft_unsigned_int.c	\
-		ft_put_zeros.c		\
+		ft_width.c			\
 		ft_flags.c			\
 		ft_atoi_no_sign.c
 
@@ -42,11 +42,11 @@ $(LIB): $(LIBFT) $(OBJS)
 
 $(LIBFT): $(LIBFTDIR)*.c $(LIBFTDIR)*.h
 	cd $(LIBFTDIR) && $(MAKE)
-	mv $(LIBFTDIR)$@ .
+	cp $(LIBFTDIR)$@ .
 
 clean:
 	cd $(LIBFTDIR) && $(MAKE) clean
-	rm -rf $(OBJS) $(LIBFT)
+	rm -rf $(OBJS) $(LIBFT) $(EXEC)
 
 fclean:	clean
 	cd $(LIBFTDIR) && $(MAKE) fclean

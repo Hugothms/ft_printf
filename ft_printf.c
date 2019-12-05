@@ -30,9 +30,9 @@ char	ft_conversion(const char *fmt, va_list arg, t_sp *sp)
 	else if (fmt[sp->index] == 'u')
 		return(ft_unsigned_int(arg, sp));
 	else if (fmt[sp->index] == 'x')
-		return(ft_hex(arg, sp));
+		return(ft_hex(arg, sp, 0));
 	else if (fmt[sp->index] == 'X')
-		return(ft_hex(arg, sp));
+		return(ft_hex(arg, sp, 1));
 	else if (fmt[sp->index] == '%')
 	{
 		sp->i = '%';
@@ -47,10 +47,7 @@ char	ft_conversion(const char *fmt, va_list arg, t_sp *sp)
 char	*ft_get_str_from_struct(t_sp *sp, char type)
 {
 	if (type == 'c')
-	{
-		// printf("y");
 		return (ft_chardup(sp->i));
-	}
 	else if (type == 's')
 		return (ft_strdup(sp->s));
 	else if (type == 'p')
@@ -59,10 +56,10 @@ char	*ft_get_str_from_struct(t_sp *sp, char type)
 		return (ft_itoa(sp->i));
 	else if (type == 'u')
 		return (ft_uitoa(sp->u));
-	// else if (type == 'x')
-	// 	return (ft_puthex(sp->h, 0));
-	// else if (type == 'X')
-	// 	return (ft_puthex(sp->h, 1));
+	else if (type == 'x')
+		return (ft_uitoa_base(sp->h, "0123456789abcdef"));
+	else if (type == 'X')
+		return (ft_uitoa_base(sp->h, "0123456789ABCDEF"));
 	else if (type == '%')
 	 	return (ft_chardup(sp->i));
 	return (NULL);
@@ -73,24 +70,35 @@ int		ft_printf_continue(const char *fmt, va_list arg, t_sp *sp)
 	t_f		*f;
 	char	type;
 	char	*str;
+	int		len;
 
 	sp->index++;
 	f = init_f();
 	ft_get_flags(fmt, sp, f);
-	ft_get_width(fmt, sp, f);
-	//ft_get_precision(fmt, sp, f);
+	ft_get_width(fmt, sp, f, arg);
+	ft_get_precision(fmt, sp, f, arg);
 	type = ft_conversion(fmt, arg, sp);
 	str = ft_get_str_from_struct(sp, type);
-	if (f->zb)
-	{
-		//printf("str: |%s|\n", str);
-		ft_put_zeros(f->width, sp, ft_strlen(str));
-	}
+	len = ft_strlen(str);
+
+
+
+	//printf("w:%d\tp:%d\tl:%d\n",f->width, f->pr, len);
+	if (f->zb && f->width > f->pr)
+		ft_put_spaces(f->width, sp, f->pr);
+	if (f->zb && f->pr > len)
+		ft_put_zeros(f->pr, sp, len);
+	if (f->za && f->pr > len)
+		ft_put_zeros(f->pr, sp, len);
 	ft_putstr(str);
-	if (f->za)
-	{
-		ft_put_spaces(f->width, sp, ft_strlen(str));
-	}
+	if (f->za && f->width > f->pr)
+		ft_put_spaces(f->width, sp, f->pr);
+
+
+
+
+
+
 	free(str);
 	return (0);
 }
