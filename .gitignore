@@ -6,4 +6,3 @@ a.out*
 *.a
 printf.code-workspace
 *.out*
-printf-unit-test
