@@ -6,7 +6,7 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 13:45:08 by hthomas           #+#    #+#              #
-#    Updated: 2019/12/05 16:36:46 by hthomas          ###   ########.fr        #
+#    Updated: 2019/12/05 19:54:43 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,11 +33,12 @@ LIBFT = libft.a
 LIBFTDIR = libft/
 MAKE = make
 EXEC = test.out
+EXEC_HARDCORE = test_hardcore.out
 
 all:	$(LIB)
 
 $(LIB): $(LIBFT) $(OBJS)
-	ar rc $@ $^
+	ar rcs $@ $^
 	ranlib $@
 
 $(LIBFT): $(LIBFTDIR)*.c $(LIBFTDIR)*.h
@@ -46,7 +47,7 @@ $(LIBFT): $(LIBFTDIR)*.c $(LIBFTDIR)*.h
 
 clean:
 	cd $(LIBFTDIR) && $(MAKE) clean
-	rm -rf $(OBJS) $(LIBFT) $(EXEC)
+	rm -rf $(OBJS) $(LIBFT) $(EXEC) $(EXEC_HARDCORE)
 
 fclean:	clean
 	cd $(LIBFTDIR) && $(MAKE) fclean
@@ -63,3 +64,9 @@ test: $(EXEC)
 
 $(EXEC): $(SRCS) main.c $(LIBFT) $(HEADER)
 	$(C) $(CFLAGS) -I$(HEADER) -o $@ $(SRCS) main.c $(LIBFT)
+
+test_hardcore: $(EXEC_HARDCORE)
+	./$<
+
+$(EXEC_HARDCORE): $(SRCS) main_hardcore.c $(LIBFT) $(HEADER)
+	$(C) $(LDFLAGS) -I$(HEADER) -o $@ $(SRCS) main_hardcore.c $(LIBFT)

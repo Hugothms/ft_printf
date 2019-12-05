@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:42:33 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/05 17:51:44 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/05 20:29:14 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,11 @@ char	ft_conversion(const char *fmt, va_list arg, t_sp *sp)
 	else if (fmt[sp->index] == 'X')
 		return (ft_hex(arg, sp, 1));
 	else if (fmt[sp->index] == '%')
-	{
-		sp->i = '%';
-		sp->len++;
-	}
+			sp->len++;
 	if (in_charset(fmt[sp->index], "cspdiuxX%"))
 		return (fmt[sp->index]);
-	return (0);
+	//ft_putstr("#####################\n");
+	return ('%');
 }
 
 char	*ft_get_str_from_struct(t_sp *sp, char type)
@@ -58,7 +56,7 @@ char	*ft_get_str_from_struct(t_sp *sp, char type)
 	else if (type == 'X')
 		return (ft_uitoa_base(sp->h, "0123456789ABCDEF"));
 	else if (type == '%')
-		return (ft_chardup(sp->i));
+		return (ft_chardup('%'));
 	return (NULL);
 }
 
@@ -75,7 +73,8 @@ int		ft_printf_continue(const char *fmt, va_list arg, t_sp *sp)
 	ft_get_width(fmt, sp, f, arg);
 	ft_get_precision(fmt, sp, f, arg);
 	type = ft_conversion(fmt, arg, sp);
-	str = ft_get_str_from_struct(sp, type);
+	if(!(str = ft_get_str_from_struct(sp, type)))
+		return (0);
 	len = ft_strlen(str);
 	if (f->zb && f->width > f->pr)
 		f->pr ? ft_spaces(f->width, sp, f->pr) : ft_zeros(f->width, sp, len);

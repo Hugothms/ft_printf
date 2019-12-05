@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:40:45 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/05 18:05:06 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/05 18:15:34 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,22 +117,22 @@ int	main(void)
 	// ! Tests
 	ft_printf("\n\n");
 	ft_printf("################# COMBINATION FLAGS-WIDTH-PRECISION  #################\n");
-	// printf("\t\t05.8d\n");
+	printf("\t\t05.8d\n");
 	printf("|%05.8d|\n", 420);
 	ft_printf("|%05.8d|\n\n", 420);
-	// printf("\t\t0.8d\n");
+	printf("\t\t0.8d\n");
 	printf("|%0.8d|\n", 420);
 	ft_printf("|%0.8d|\n\n", 420);
-	// printf("\t\t08.5d\n");
+	printf("\t\t08.5d\n");
 	printf("|%08.5d|\n", 420);
 	ft_printf("|%08.5d|\n\n", 420);
-	// printf("\t\t-5.8d\n");
+	printf("\t\t-5.8d\n");
 	printf("|%-5.8d|\n", 420);
 	ft_printf("|%-5.8d|\n\n", 420);
-	// printf("\t\t-8.5d\n");
+	printf("\t\t-8.5d\n");
 	printf("|%-8.5d|\n", 420);
 	ft_printf("|%-8.5d|\n\n", 420);
-	// printf("\t\t05.8d\n");
+	printf("\t\t0*.8d\n");
 	printf("|%0*.8d|\n", 5, 420);
 	ft_printf("|%0*.8d|\n\n", 5, 420);
 
