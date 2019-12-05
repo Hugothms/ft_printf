@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 16:29:00 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/02 21:01:46 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/05 16:46:00 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,3 @@ void	ft_putpointer(unsigned long long pointer)
 		ft_putchar(pointer % 16 + (pointer % 16 < 10 ? '0' : 'a' - 10));
 	}
 }
-

@@ -6,13 +6,13 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 08:15:50 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/05 11:41:43 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/05 16:47:12 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_count_len_nbr_ui(unsigned int n, char *base_to)
+int				ft_count_len_nbr_ui(unsigned int n, char *base_to)
 {
 	int		res;
 
@@ -27,7 +27,7 @@ int			ft_count_len_nbr_ui(unsigned int n, char *base_to)
 	return (res);
 }
 
-char			*fill_positivenbr_base_ui(unsigned int nbr, char *base, char *res, int i)
+char			*fill_base_ui(unsigned int nbr, char *base, char *res, int i)
 {
 	int		size;
 
@@ -37,7 +37,7 @@ char			*fill_positivenbr_base_ui(unsigned int nbr, char *base, char *res, int i)
 	if (nbr != 0)
 	{
 		res[i] = (base[nbr % size]);
-		return (fill_positivenbr_base_ui(nbr / size, base, res, i + 1));
+		return (fill_base_ui(nbr / size, base, res, i + 1));
 	}
 	return (res);
 }
@@ -48,7 +48,7 @@ char			*fill_nbr_base_ui(char *res, unsigned int nbr, char *base)
 
 	i = 0;
 	if (nbr != 0)
-		res = fill_positivenbr_base_ui(nbr, base, res, i);
+		res = fill_base_ui(nbr, base, res, i);
 	else if (nbr == 0)
 		res[0] = (base[0]);
 	return (res);

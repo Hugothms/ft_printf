@@ -6,11 +6,11 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 15:26:20 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/05 12:50:33 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/05 16:43:02 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"ft_printf.h"
+#include "ft_printf.h"
 
 void	ft_put_zeros(int width, t_sp *sp, int len)
 {

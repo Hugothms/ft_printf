@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/04 16:33:35 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/05 16:41:18 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,3 @@ char	ft_unsigned_int(va_list arg, t_sp *sp)
 	sp->len += ft_count_len_nbr(sp->u);
 	return ('u');
 }
-

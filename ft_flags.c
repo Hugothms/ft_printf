@@ -6,13 +6,13 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 16:07:56 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/05 13:06:45 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/05 16:42:32 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"ft_printf.h"
+#include "ft_printf.h"
 
-void	ft_get_flags(const char *fmt, t_sp *sp, t_f	*f)
+void	ft_get_flags(const char *fmt, t_sp *sp, t_f *f)
 {
 	while (in_charset(fmt[sp->index], "-0"))
 	{
@@ -27,7 +27,7 @@ void	ft_get_flags(const char *fmt, t_sp *sp, t_f	*f)
 	}
 }
 
-void	ft_get_width(const char *fmt, t_sp *sp, t_f	*f, va_list arg)
+void	ft_get_width(const char *fmt, t_sp *sp, t_f *f, va_list arg)
 {
 	if (fmt[sp->index] == '*')
 	{
@@ -42,7 +42,7 @@ void	ft_get_width(const char *fmt, t_sp *sp, t_f	*f, va_list arg)
 	}
 }
 
-void	ft_get_precision(const char *fmt, t_sp *sp, t_f	*f, va_list arg)
+void	ft_get_precision(const char *fmt, t_sp *sp, t_f *f, va_list arg)
 {
 	if (fmt[sp->index] == '.')
 	{
