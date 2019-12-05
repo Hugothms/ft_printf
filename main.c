@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:40:45 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/05 16:32:10 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/05 18:05:06 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(void)
 	ft_printf("A char: %c\n", 'A');
 	while (c < 127)
 	{
-		ft_printf("%c\t", c);
+		//ft_printf("%c\t", c);
 		////printf("%c\t", c);
 		c++;
 	}
@@ -44,22 +44,17 @@ int	main(void)
 	printf("An integer: %d\n", -32);
 	ft_printf("Zero: %d\n", 0);
 	printf("Zero: %d\n", 0);
-	ft_printf("Width 1: %01d\n",42);
-	printf("Width 1: %01d\n",42);
-	ft_printf("Width 0: %00d\n",42);
-	printf("Width 0: %00d\n",42);
 	ft_printf("Min integer: %d\n", INT_MIN);
 	printf("Min integer: %d\n", INT_MIN);
 	ft_printf("Max integer: %d\n", INT_MAX);
 	printf("Max integer: %d\n", INT_MAX);
 	int d = 31, m = 8, y = 1996;
-	ft_printf("I am born the: %02d/%02d/%04d\n", d, m, y);
-	printf("I am born the: %02d/%02d/%04d\n", d, m, y);
-	ft_printf("I am born the: %-4d/%-4d/%-4d\n", d, m, y);
-	printf("I am born the: %-4d/%-4d/%-4d\n", d, m, y);
-
-	ft_printf("|%-45d|\n", 42);
-	printf("|%-45d|\n", 42);
+	ft_printf("I am born the: |%02d/%02d/%04d|\n", d, m, y);
+	printf("I am born the: |%02d/%02d/%04d|\n", d, m, y);
+	ft_printf("I will die: \t|%-4d/%-4d/%-4d|\n", d, m, y + 100);
+	printf("I will die: \t|%-4d/%-4d/%-4d|\n", d, m, y + 100);
+	ft_printf("|%-42d|\n", 42);
+	printf("|%-42d|\n", 42);
 
 	// ! Unsigned integer
 	ft_printf("\n\n");
@@ -86,7 +81,7 @@ int	main(void)
 
 	// ! Hex lower case
 	ft_printf("\n\n");
-	ft_printf("############################## HEXlower ##############################\n");
+	ft_printf("############################# HEX lower  #############################\n");
 	ft_printf("An address: %x\n", 0x00f4);
 	printf("An address: %x\n", 0x00f4);
 	ft_printf("Null pointer: %x\n", 0);
@@ -96,7 +91,7 @@ int	main(void)
 	long long hex = 0;
 	while (hex <= 0xFF)
 	{
-		ft_printf("%x\t", hex);
+		//ft_printf("%x\t", hex);
 		////printf("%x\t", hex);
 		hex++;
 	}
@@ -104,7 +99,7 @@ int	main(void)
 
 	// ! Hex upper case
 	ft_printf("\n\n");
-	ft_printf("############################## HEXupper ##############################\n");
+	ft_printf("############################# HEX upper  #############################\n");
 	ft_printf("An address: %X\n", 0x00f4);
 	printf("An address: %X\n", 0x00f4);
 	ft_printf("Null pointer: %X\n", 0);
@@ -114,47 +109,32 @@ int	main(void)
 	hex = 0;
 	while (hex <= 0xFF)
 	{
-		ft_printf("%X\t", hex);
+		//ft_printf("%X\t", hex);
 		////printf("%X\t", hex);
 		hex++;
 	}
 
 	// ! Tests
 	ft_printf("\n\n");
-	ft_printf("############################## TESTS ##############################\n");
-	printf("\t\t05.8d\n");
+	ft_printf("################# COMBINATION FLAGS-WIDTH-PRECISION  #################\n");
+	// printf("\t\t05.8d\n");
 	printf("|%05.8d|\n", 420);
 	ft_printf("|%05.8d|\n\n", 420);
-	printf("\t\t0.8d\n");
+	// printf("\t\t0.8d\n");
 	printf("|%0.8d|\n", 420);
 	ft_printf("|%0.8d|\n\n", 420);
-	printf("\t\t08.5d\n");
+	// printf("\t\t08.5d\n");
 	printf("|%08.5d|\n", 420);
 	ft_printf("|%08.5d|\n\n", 420);
-	printf("\t\t-5.8d\n");
+	// printf("\t\t-5.8d\n");
 	printf("|%-5.8d|\n", 420);
 	ft_printf("|%-5.8d|\n\n", 420);
-	printf("\t\t-8.5d\n");
+	// printf("\t\t-8.5d\n");
 	printf("|%-8.5d|\n", 420);
-	ft_printf("|%-8.5d|\n\n\n\n", 420);
-
-
-	printf("\t\t0*.8d\n");
+	ft_printf("|%-8.5d|\n\n", 420);
+	// printf("\t\t05.8d\n");
 	printf("|%0*.8d|\n", 5, 420);
 	ft_printf("|%0*.8d|\n\n", 5, 420);
-	printf("\t\t0.8d\n");
-	printf("|%0.8d|\n", 420);
-	ft_printf("|%0.8d|\n\n", 420);
-	printf("\t\t0*.5d\n");
-	printf("|%0*.5d|\n", 8, 420);
-	ft_printf("|%0*.5d|\n\n", 8, 420);
-	printf("\t\t-*.8d\n");
-	printf("|%-*.8d|\n", 5, 420);
-	ft_printf("|%-*.8d|\n\n", 5, 420);
-	printf("\t\t-*.5d\n");
-	printf("|%-*.5d|\n", 8, 420);
-	ft_printf("|%-*.5d|\n\n", 8, 420);
-
 
 	return (0);
 }

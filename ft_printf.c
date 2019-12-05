@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:42:33 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/05 16:50:45 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/05 17:51:44 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,14 @@ int		ft_printf_continue(const char *fmt, va_list arg, t_sp *sp)
 	str = ft_get_str_from_struct(sp, type);
 	len = ft_strlen(str);
 	if (f->zb && f->width > f->pr)
-		ft_put_spaces(f->width, sp, f->pr);
-	if (f->zb && f->pr > len)
-		ft_put_zeros(f->pr, sp, len);
-	if (f->za && f->pr > len)
-		ft_put_zeros(f->pr, sp, len);
+		f->pr ? ft_spaces(f->width, sp, f->pr) : ft_zeros(f->width, sp, len);
+	else if (f->zb && f->width > f->pr)
+		ft_zeros(f->width, sp, f->pr ? f->pr : len);
+	if ((f->zb || f->za) && f->pr && f->pr > len)
+		ft_zeros(f->pr, sp, len);
 	ft_putstr(str);
-	if (f->za && f->width > f->pr)
-		ft_put_spaces(f->width, sp, f->pr);
+	if (f->za && f->width && f->width > f->pr)
+		ft_spaces(f->width, sp, f->pr ? f->pr : len);
 	free(str);
 	return (0);
 }
