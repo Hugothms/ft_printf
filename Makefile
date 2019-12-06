@@ -6,7 +6,7 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 13:45:08 by hthomas           #+#    #+#              #
-#    Updated: 2019/12/06 12:12:23 by hthomas          ###   ########.fr        #
+#    Updated: 2019/12/06 12:32:20 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ MAKE = make
 EXEC = test.out
 EXEC_HARDCORE = test_hardcore.out
 EXEC_test = test_test.out
+
 all:	$(LIB)
 
 $(LIB): $(LIBFT) $(OBJS)
@@ -62,18 +63,18 @@ HEADER = ft_printf.h
 test: $(EXEC)
 	./$<
 
-$(EXEC): $(SRCS) main.c $(LIBFT) $(HEADER)
-	$(C) $(CFLAGS) -I$(HEADER) -o $@ $(SRCS) main.c $(LIBFT)
+$(EXEC): $(HEADER) $(SRCS) main.c $(LIBFT)
+	$(C) $(CFLAGS) -o $@ -I$^
 
 test_hardcore: $(EXEC_HARDCORE)
 	./$<
 
-$(EXEC_HARDCORE): $(SRCS) main_hardcore.c $(LIBFT) $(HEADER)
-	$(C) $(LDFLAGS) -I$(HEADER) -o $@ $(SRCS) main_hardcore.c $(LIBFT)
+$(EXEC_HARDCORE): $(HEADER) $(SRCS) main_hardcore.c $(LIBFT)
+	$(C) $(LDFLAGS) -o $@ -I$^
 
 
 test_test: $(EXEC_test)
 	./$<
 
-$(EXEC_test): $(SRCS) main_test.c $(LIBFT) $(HEADER)
-	$(C) $(LDFLAGS) -I$(HEADER) -o $@ $(SRCS) main_test.c $(LIBFT)
+$(EXEC_test): $(HEADER) $(SRCS) main_test.c $(LIBFT)
+	$(C) $(LDFLAGS) -o $@ -I$^
