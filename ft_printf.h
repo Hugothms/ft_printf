@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:44:08 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/05 17:53:40 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/06 14:52:58 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <limits.h>
+
+# define ERR -1
+# define OK 1
 
 typedef struct		s_printf
 {
@@ -39,12 +42,12 @@ typedef struct		s_flags
 
 int					ft_printf(const char *format, ...);
 
-char				ft_char(va_list arg, t_sp *sp);
-char				ft_string(va_list arg, t_sp *sp);
-char				ft_pointer(va_list arg, t_sp *sp);
-char				ft_integer(va_list arg, t_sp *sp);
-char				ft_unsigned_int(va_list arg, t_sp *sp);
-char				ft_hex(va_list arg, t_sp *sp, int uppercase);
+char				*ft_char(va_list arg, t_sp *sp);
+char				*ft_string(va_list arg, t_sp *sp);
+char				*ft_pointer(va_list arg, t_sp *sp);
+char				*ft_integer(va_list arg, t_sp *sp);
+char				*ft_unsigned_int(va_list arg, t_sp *sp);
+char				*ft_hex(va_list arg, t_sp *sp, int uppercase);
 
 t_sp				*init_sp(void);
 t_sp				*reset_sp(t_sp *sp);
