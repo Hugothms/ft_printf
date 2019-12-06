@@ -6,7 +6,7 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/04 11:49:24 by hthomas           #+#    #+#              #
-#    Updated: 2019/12/05 11:29:08 by hthomas          ###   ########.fr        #
+#    Updated: 2019/12/06 13:19:19 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,19 +83,37 @@ SRCS 		=	ft_memset.c				\
 				ft_nsplit.c				\
 				ft_strjoin_sep.c
 
+
+###########################
+BLACK_FG = \033[38;5;0m
+RED_FG = \033[38;5;196m
+GREEN_FG = \033[38;5;46m
+
+BLACK_BG = \033[48;5;0m
+BLUE_BG = \033[48;5;39m
+PINK_BG = \033[48;5;213m
+YELLOW_BG = \033[48;5;11m
+RANLIB_BG = \033[48;5;172m
+
+CLEAR_COLOR = \033[m
+###########################
+
+
+
 all:		$(NAME)
 
 $(NAME):	${OBJS}
-	ar rc	$(NAME) ${OBJS}
-	ranlib	$(NAME)
+	@echo "Creating $(GREEN_FG)libft.a $(CLEAR_COLOR)"
+	@ar rc	$(NAME) ${OBJS}
+	@ranlib	$(NAME)
 
 .c.o:
-	${CC} ${CFLAGS} -I$(INCLUDES) -c $< -o ${<:.c=.o}
+	@${CC} ${CFLAGS} -I$(INCLUDES) -c $< -o ${<:.c=.o}
 
 clean:
-	rm -f $(OBJS)
+	@rm -f $(OBJS)
 
 fclean:		clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re:			fclean all
