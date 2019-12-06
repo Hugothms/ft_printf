@@ -6,7 +6,7 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 13:45:08 by hthomas           #+#    #+#              #
-#    Updated: 2019/12/06 17:18:34 by hthomas          ###   ########.fr        #
+#    Updated: 2019/12/06 17:28:06 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -120,4 +120,4 @@ precise: $(EXEC_precise)
 	@./$<
 
 $(EXEC_precise):	$(INCLUDES) $(SRCS) main_precise.c $(LIBFT)
-	@$(C) -o $@ -I$^
+	@$(C) $(CFLAGS) -o $@ -I$^

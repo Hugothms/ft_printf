@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:40:45 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/06 16:50:15 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/06 17:27:47 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ int	main(void)
 {
 	int ret;
 	int ret2;
-	int count;
-	int countf;
-	void	*ptr2 = "ok";
+	int count=0;
+	int countf=0;
+	// void	*ptr2 = "ok";
 	void	*ptr3 = NULL;
-	int	c;
+	// int	c;
 
 	printf("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^TEST 23\n");
 	ret = printf("%.1s\n", ptr3);

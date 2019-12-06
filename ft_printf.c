@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:42:33 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/06 16:48:57 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/06 17:38:51 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,15 @@ void ft_show(t_sp *sp, t_f *f, char *str)
 		f->pr ? ft_spaces(f->width, sp, f->pr) : ft_zeros(f->width, sp, len);
 	else if (f->zb && f->width > f->pr)
 		ft_zeros(f->width, sp, f->pr ? f->pr : len);
+	else if (f->width)
+	{
+		if (*str == '-' && sp->i)
+		{
+			str++;
+			f->pr--;
+		}
+		ft_zeros(f->width, sp, f->pr ? f->pr : len);
+	}
 	if ((f->zb || f->za) && f->pr && f->pr > len)
 		ft_zeros(f->pr, sp, len);
 	if (sp->s && f->pr)
