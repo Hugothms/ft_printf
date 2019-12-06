@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:42:33 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/06 16:26:52 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/06 16:48:57 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void ft_show(t_sp *sp, t_f *f, char *str)
 		ft_zeros(f->width, sp, f->pr ? f->pr : len);
 	if ((f->zb || f->za) && f->pr && f->pr > len)
 		ft_zeros(f->pr, sp, len);
-	// if (sp->s)
-	// 	ft_putstrn(str, f->pr);
-	// else
+	if (sp->s && f->pr)
+		ft_putstrn(str, f->pr);
+	else
 		ft_putstr(str);
 	if (f->za && f->width && f->width > f->pr)
 		ft_spaces(f->width, sp, f->pr ? f->pr : len);
@@ -67,8 +67,8 @@ int		ft_printf_continue(const char *fmt, va_list arg, t_sp *sp)
 	if(!(str = ft_conversion(fmt, arg, sp)))
 		return (ERR);
 	tmp = ft_strlen(str);
-	// if (sp->s && f->pr < tmp)
-	// 	tmp = f->pr;
+	if (sp->s && f->pr && f->pr < tmp)
+		tmp = f->pr;
 	sp->len += tmp;
 	ft_show(sp, f, str);
 	free(str);

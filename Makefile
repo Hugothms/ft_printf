@@ -6,7 +6,7 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 13:45:08 by hthomas           #+#    #+#              #
-#    Updated: 2019/12/06 16:24:19 by hthomas          ###   ########.fr        #
+#    Updated: 2019/12/06 17:18:34 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,8 +69,7 @@ all:		$(LIB)
 
 $(LIB):		$(LIBFT) $(OBJS) $(INCLUDES)
 	@echo "Creating $(GREEN_FG)libftprintf.a$(CLEAR_COLOR)"
-	ar rcs $@ $(OBJS) $(INCLUDES)
-	ar ms $@ $(LIBFT)
+	ar rcs $@ $(OBJS) $(INCLUDES) $(LIBFTDIR)/*.o
 	ranlib $@
 	@echo "$(GREEN_BG)$(BLACK_FG)Done$(CLEAR_COLOR)"
 
@@ -101,24 +100,24 @@ re:		fclean all
 test:	$(EXEC)
 	@./$<
 
-$(EXEC):	$(INCLUDES) $(SRCS) main.c $(LIBFT)
-	@$(C) $(CFLAGS) -o $@ -I$^
+$(EXEC):	$(LIB) main.c
+	@$(C) $(CFLAGS) -o $@ main.c -L./ -lftprintf
 
 test_hardcore: $(EXEC_HARDCORE)
 	@./$<
 
-$(EXEC_HARDCORE):	$(INCLUDES) $(SRCS) main_hardcore.c $(LIBFT)
-	@$(C) $(CFLAGS) -o $@ -I$^
+$(EXEC_HARDCORE):	$(LIB) main_hardcore.c
+	@$(C) $(CFLAGS) -o $@ main_hardcore.c -L./ -lftprintf
 
 
 test_test: $(EXEC_test)
 	@./$<
 
-$(EXEC_test):	$(INCLUDES) $(SRCS) main_test.c $(LIBFT)
-	@$(C) $(CFLAGS) -o $@ -I$^
+$(EXEC_test): $(LIB) main_test.c
+	@$(C) $(CFLAGS) -o $@ main_test.c -L./ -lftprintf
 
 precise: $(EXEC_precise)
 	@./$<
 
 $(EXEC_precise):	$(INCLUDES) $(SRCS) main_precise.c $(LIBFT)
-	@$(C) $(CFLAGS) -o $@ -I$^
+	@$(C) -o $@ -I$^
