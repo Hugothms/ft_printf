@@ -6,7 +6,7 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/04 11:49:24 by hthomas           #+#    #+#              #
-#    Updated: 2019/12/06 13:19:19 by hthomas          ###   ########.fr        #
+#    Updated: 2019/12/06 15:33:52 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,6 +75,8 @@ SRCS 		=	ft_memset.c				\
 				ft_lstmap.c				\
 				ft_putchar.c			\
 				ft_putstr.c				\
+				ft_putstrn.c			\
+				ft_putstrn_fd.c			\
 				ft_putnbr_base.c		\
 				ft_strcmp.c				\
 				ft_strstr.c				\

@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_unsigned_int.c                                  :+:      :+:    :+:   */
+/*   ft_putstrn.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/06 15:13:41 by hthomas          ###   ########.fr       */
+/*   Created: 2019/08/28 14:04:05 by hthomas           #+#    #+#             */
+/*   Updated: 2019/12/06 15:37:00 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-char	*ft_unsigned_int(va_list arg, t_sp *sp)
+void	ft_putstrn(const char *str, unsigned int n)
 {
-	sp->u = va_arg(arg, unsigned int);
-	return (ft_uitoa(sp->u));
+	ft_putstrn_fd(str, 1, n);
 }

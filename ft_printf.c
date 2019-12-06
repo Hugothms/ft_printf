@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:42:33 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/06 14:52:52 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/06 16:26:52 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,14 @@ char	*ft_conversion(const char *fmt, va_list arg, t_sp *sp)
 		return (ft_hex(arg, sp, 0));
 	else if (fmt[sp->index] == 'X')
 		return (ft_hex(arg, sp, 1));
-	else if (fmt[sp->index] == '%')
-			sp->len++;
 	if (in_charset(fmt[sp->index], "cspdiuxX%"))
 		return (ft_chardup('%'));
-	return (ERR);
+	return (NULL);
 }
 
 void ft_show(t_sp *sp, t_f *f, char *str)
 {
-	int		len;
+	unsigned long	len;
 
 	len = ft_strlen(str);
 	if (f->zb && f->width > f->pr)
@@ -46,7 +44,10 @@ void ft_show(t_sp *sp, t_f *f, char *str)
 		ft_zeros(f->width, sp, f->pr ? f->pr : len);
 	if ((f->zb || f->za) && f->pr && f->pr > len)
 		ft_zeros(f->pr, sp, len);
-	ft_putstr(str);
+	// if (sp->s)
+	// 	ft_putstrn(str, f->pr);
+	// else
+		ft_putstr(str);
 	if (f->za && f->width && f->width > f->pr)
 		ft_spaces(f->width, sp, f->pr ? f->pr : len);
 }
@@ -54,8 +55,9 @@ void ft_show(t_sp *sp, t_f *f, char *str)
 
 int		ft_printf_continue(const char *fmt, va_list arg, t_sp *sp)
 {
-	t_f		*f;
-	char	*str;
+	t_f				*f;
+	char			*str;
+	unsigned long	tmp;
 
 	sp->index++;
 	f = init_f();
@@ -64,6 +66,10 @@ int		ft_printf_continue(const char *fmt, va_list arg, t_sp *sp)
 	ft_get_precision(fmt, sp, f, arg);
 	if(!(str = ft_conversion(fmt, arg, sp)))
 		return (ERR);
+	tmp = ft_strlen(str);
+	// if (sp->s && f->pr < tmp)
+	// 	tmp = f->pr;
+	sp->len += tmp;
 	ft_show(sp, f, str);
 	free(str);
 	return (OK);

@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:02:45 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/05 11:28:52 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/06 15:37:04 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void				ft_putnbr_fd(int nb, int fd);
 void				ft_putnbr(int nb);
 void				ft_putnbr_unsigned_fd(unsigned int nb, int fd);
 void				ft_putnbr_unsigned(unsigned int nb);
+void				ft_putstrn(const char *str, unsigned int n);
+void				ft_putstrn_fd(const char *str, int fd, unsigned int n);
 void				ft_putstr_fd(const char *str, int fd);
 void				ft_putstr(const char *str);
 void				ft_putendl_fd(char const *s, int fd);

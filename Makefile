@@ -6,7 +6,7 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 13:45:08 by hthomas           #+#    #+#              #
-#    Updated: 2019/12/06 14:31:31 by hthomas          ###   ########.fr        #
+#    Updated: 2019/12/06 16:24:19 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ MAKE = make
 EXEC = test.out
 EXEC_HARDCORE = test_hardcore.out
 EXEC_test = test_test.out
-
+EXEC_precise = precise.out
 
 
 
@@ -69,8 +69,9 @@ all:		$(LIB)
 
 $(LIB):		$(LIBFT) $(OBJS) $(INCLUDES)
 	@echo "Creating $(GREEN_FG)libftprintf.a$(CLEAR_COLOR)"
-	@ar rcs $@ $^
-	@ranlib $@
+	ar rcs $@ $(OBJS) $(INCLUDES)
+	ar ms $@ $(LIBFT)
+	ranlib $@
 	@echo "$(GREEN_BG)$(BLACK_FG)Done$(CLEAR_COLOR)"
 
 
@@ -87,7 +88,7 @@ clean:
 fclean:		clean
 	@echo "$(RED_FG)Deleting exe$(CLEAR_COLOR)"
 	@cd $(LIBFTDIR) && $(MAKE) fclean
-	@rm -f $(LIB) $(EXEC) $(EXEC_HARDCORE) $(EXEC_test)
+	@rm -f $(LIB) $(EXEC) $(EXEC_HARDCORE) $(EXEC_test) $(EXEC_precise)
 
 re:		fclean all
 
@@ -107,11 +108,17 @@ test_hardcore: $(EXEC_HARDCORE)
 	@./$<
 
 $(EXEC_HARDCORE):	$(INCLUDES) $(SRCS) main_hardcore.c $(LIBFT)
-	@$(C) $(LDFLAGS) -o $@ -I$^
+	@$(C) $(CFLAGS) -o $@ -I$^
 
 
 test_test: $(EXEC_test)
 	@./$<
 
 $(EXEC_test):	$(INCLUDES) $(SRCS) main_test.c $(LIBFT)
-	@$(C) $(LDFLAGS) -o $@ -I$^
+	@$(C) $(CFLAGS) -o $@ -I$^
+
+precise: $(EXEC_precise)
+	@./$<
+
+$(EXEC_precise):	$(INCLUDES) $(SRCS) main_precise.c $(LIBFT)
+	@$(C) $(CFLAGS) -o $@ -I$^
