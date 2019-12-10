@@ -6,7 +6,7 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 13:45:08 by hthomas           #+#    #+#              #
-#    Updated: 2019/12/06 17:28:06 by hthomas          ###   ########.fr        #
+#    Updated: 2019/12/10 14:44:30 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRCS = 	ft_printf.c			\
 		ft_atoi_no_sign.c
 
 OBJS = $(SRCS:.c=.o)
-LIB = libftprintf.a
+NAME = libftprintf.a
 INCLUDES = ft_printf.h
 
 LIBFT = libft.a
@@ -65,59 +65,59 @@ CLEAR_COLOR =	\033[m
 ###########################
 
 
-all:		$(LIB)
+all:		$(NAME)
 
-$(LIB):		$(LIBFT) $(OBJS) $(INCLUDES)
-	@echo "Creating $(GREEN_FG)libftprintf.a$(CLEAR_COLOR)"
+$(NAME):		$(LIBFT) $(OBJS) $(INCLUDES)
+	#@echo "Creating $(GREEN_FG)libftprintf.a$(CLEAR_COLOR)"
 	ar rcs $@ $(OBJS) $(INCLUDES) $(LIBFTDIR)/*.o
 	ranlib $@
-	@echo "$(GREEN_BG)$(BLACK_FG)Done$(CLEAR_COLOR)"
+	#@echo "$(GREEN_BG)$(BLACK_FG)Done$(CLEAR_COLOR)"
 
 
 $(LIBFT):	$(LIBFTDIR)*.c $(LIBFTDIR)*.h
-	@echo "Compiling $(GREEN_FG).c $(CLEAR_COLOR)in $(YELLOW_BG)$(BLACK_FG)libft/$(CLEAR_COLOR)"
-	@cd $(LIBFTDIR) && $(MAKE)
-	@cp $(LIBFTDIR)$@ .
+	#@echo "Compiling $(GREEN_FG).c $(CLEAR_COLOR)in $(YELLOW_BG)$(BLACK_FG)libft/$(CLEAR_COLOR)"
+	cd $(LIBFTDIR) && $(MAKE)
+	cp $(LIBFTDIR)$@ ./$(NAME)
 
 clean:
-	@echo "$(REDL_FG)Deleting .o$(CLEAR_COLOR)"
-	@cd $(LIBFTDIR) && $(MAKE) clean
-	@rm -rf $(OBJS) $(LIBFT)
+	#@echo "$(REDL_FG)Deleting .o$(CLEAR_COLOR)"
+	cd $(LIBFTDIR) && $(MAKE) clean
+	rm -rf $(OBJS) $(LIBFT)
 
 fclean:		clean
-	@echo "$(RED_FG)Deleting exe$(CLEAR_COLOR)"
-	@cd $(LIBFTDIR) && $(MAKE) fclean
-	@rm -f $(LIB) $(EXEC) $(EXEC_HARDCORE) $(EXEC_test) $(EXEC_precise)
+	#@echo "$(RED_FG)Deleting exe$(CLEAR_COLOR)"
+	cd $(LIBFTDIR) && $(MAKE) fclean
+	rm -f $(NAME) $(EXEC) $(EXEC_HARDCORE) $(EXEC_test) $(EXEC_precise)
 
 re:		fclean all
 
 
 .c.o:
-	@${CC} ${CFLAGS} -I$(INCLUDES) -c $< -o ${<:.c=.o}
+	${CC} ${CFLAGS} -I$(INCLUDES) -c $< -o ${<:.c=.o}
 
 
 
 test:	$(EXEC)
-	@./$<
+	./$<
 
-$(EXEC):	$(LIB) main.c
-	@$(C) $(CFLAGS) -o $@ main.c -L./ -lftprintf
+$(EXEC):	$(NAME) main.c
+	$(C) $(CFLAGS) -o $@ main.c -L./ -lftprintf
 
 test_hardcore: $(EXEC_HARDCORE)
-	@./$<
+	./$<
 
-$(EXEC_HARDCORE):	$(LIB) main_hardcore.c
-	@$(C) $(CFLAGS) -o $@ main_hardcore.c -L./ -lftprintf
+$(EXEC_HARDCORE):	$(NAME) main_hardcore.c
+	$(C) $(CFLAGS) -o $@ main_hardcore.c -L./ -lftprintf
 
 
 test_test: $(EXEC_test)
-	@./$<
+	./$<
 
-$(EXEC_test): $(LIB) main_test.c
-	@$(C) $(CFLAGS) -o $@ main_test.c -L./ -lftprintf
+$(EXEC_test): $(NAME) main_test.c
+	$(C) $(CFLAGS) -o $@ main_test.c -L./ -lftprintf
 
 precise: $(EXEC_precise)
-	@./$<
+	./$<
 
 $(EXEC_precise):	$(INCLUDES) $(SRCS) main_precise.c $(LIBFT)
-	@$(C) $(CFLAGS) -o $@ -I$^
+	$(C) $(CFLAGS) -o $@ -I$^

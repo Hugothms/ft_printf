@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 20:25:55 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/05 16:50:23 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/10 14:40:59 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ t_f		*init_f(void)
 
 	if (!(f = (t_f*)malloc(sizeof(t_f))))
 		return (NULL);
-	f->zb = 0;
-	f->za = 0;
+	f->zero = 0;
+	f->minus = 0;
 	f->pr = 0;
 	f->width = 0;
 	return (f);

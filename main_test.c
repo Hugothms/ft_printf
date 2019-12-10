@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 02:48:26 by moudmine          #+#    #+#             */
-/*   Updated: 2019/12/06 17:33:26 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/10 14:34:23 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main()
 
 	countf = 0;
 	printf("\033[1;46m");
-	printf("\n\n||-----------------------------------WITHOUT CONVERSIONS---------------------------------||\033[0m\n\n\n");
+	printf("\n\n||------WITHOUT CONVERSIONS----||\033[0m\n\n\n");
 
 	printf("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^TEST 1\n");
 	ret = printf("salut le monde");
@@ -179,9 +179,9 @@ int main()
 
 
 	printf("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^TEST 10\n");
-	ret = printf("la guerre est finie le %d/%d/%d", 8, 5, 1945);
+	ret = printf("la guerre est finie le %02d/%02d/%d", 8, 5, 1945);
 	printf("\n\033[0;36mExpected return =\t%d ! \033[0m\n", ret);
-	ret2 = ft_printf("la guerre est finie le %d/%d/%d", 8, 5, 1945);
+	ret2 = ft_printf("la guerre est finie le %02d/%02d/%d", 8, 5, 1945);
 	printf("\n\033[0;36mYour return =\t\t%d ! \033[0m\n", ret2);
 	if (ret == ret2)
 	{
@@ -211,7 +211,7 @@ int main()
 	printf("\033[1;32m ############YOUR SCORE IS : %d/5  ####################\033[0m\n\n\n\n\n", count);
 
 	printf("\033[1;46m");
-	printf("\n\n||-----------------------------------UNSIGNED---------------------------------||\033[0m\n\n\n");
+	printf("\n\n||UNSIGNED----||\033[0m\n\n\n");
 
 	printf("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^TEST 12\n");
 	ret = printf("Plusieurs nombres %u %u %u %u et %u", 0, -42, 42, -2147483647, 2147483647);
@@ -312,9 +312,9 @@ int main()
 		printf("\033[0;41m               KO :( \033[0m\n");
 
 	printf("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^TEST 18\n");
-	ret = printf("le dernier : ** ");
+	ret = printf("le dernier : *%-30p* ", ptr2);
 	printf("\n\033[0;36mExpected return =\t%d ! \033[0m\n", ret);
-	ret2 = ft_printf("le dernier : ** ");
+	ret2 = ft_printf("le dernier : *%-30p* ", ptr2);
 	printf("\n\033[0;36mYour return =\t\t%d ! \033[0m\n", ret2);
 	if (ret == ret2)
 	{
@@ -367,9 +367,9 @@ int main()
 	printf("\n\n||------------FLAGS-----------||\033[0m\n\n\n");
 
 	printf("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^TEST 20\n");
-	ret = printf("%05.2d", 16);
+	ret = printf("%-10.6d.", 16);
 	printf("\n\033[0;36mExpected return =\t%d ! \033[0m\n", ret);
-	ret2 = ft_printf("%05.2d", 16);
+	ret2 = ft_printf("%-10.6d.", 16);
 	printf("\n\033[0;36mYour return =\t\t%d ! \033[0m\n", ret2);
 	count = 0;
 	if (ret == ret2)
@@ -398,9 +398,9 @@ int main()
 
 
 	printf("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^TEST 22\n");
-	ret = printf("%.6s", "12345");
+	ret = printf("%.20s.", "12345");
 	printf("\n\033[0;36mExpected return =\t%d ! \033[0m\n", ret);
-	ret2 = ft_printf("%.6s", "12345");
+	ret2 = ft_printf("%.20s.", "12345");
 	printf("\n\033[0;36mYour return =\t\t%d ! \033[0m\n", ret2);
 	if (ret == ret2)
 	{
@@ -412,9 +412,9 @@ int main()
 		printf("\033[0;41m               KO :( \033[0m\n");
 
 	printf("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^TEST 23\n");
-	ret = printf("%.1s\n", ptr3);
+	ret = printf("%.10s\n.", ptr3);
 	printf("\n\033[0;36mExpected return =\t%d ! \033[0m\n", ret);
-	ret2 = ft_printf("%.1s\n", ptr3);
+	ret2 = ft_printf("%.10s\n.", ptr3);
 	printf("\n\033[0;36mYour return =\t\t%d ! \033[0m\n", ret2);
 	if (ret == ret2)
 	{
@@ -441,9 +441,9 @@ int main()
 
 
 	printf("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^TEST 25\n");
-	ret = printf("%*.*dp%%", -20, 15, -12345);
+	ret = printf("%-20.15dp%%", -12345);
 	printf("\n\033[0;36mExpected return =\t%d ! \033[0m\n", ret);
-	ret2 = ft_printf("%*.*dp%%", -20, 15, -12345);
+	ret2 = ft_printf("%-20.15dp%%", -12345);
 	printf("\n\033[0;36mYour return =\t\t%d ! \033[0m\n", ret2);
 	if (ret == ret2)
 	{
@@ -514,10 +514,10 @@ int main()
 		printf("\033[0;41m               KO :( \033[0m\n");
 
 
-	printf("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^TEST 18\n");
-	ret = printf("Le dernier %*.*x %*.*X\n", 1, 50, 500, 1, 0, 10);
+	printf("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^TEST 30\n");
+	ret = printf("%*.*x.\n", 1, 50, 500);
 	printf("\n\033[0;36mExpected return =\t%d ! \033[0m\n", ret);
-	ret2 = ft_printf("Le dernier %*.*x %*.*X\n", 1, 50, 500, 1, 0, 10);
+	ret2 = ft_printf("%*.*x.\n", 1, 50, 500);
 	printf("\n\033[0;36mYour return =\t\t%d ! \033[0m\n", ret2);
 	if (ret == ret2)
 	{
@@ -528,7 +528,7 @@ int main()
 	else
 		printf("\033[0;41m               KO :( \033[0m\n");
 
-	printf("\033[1;32m ############YOUR SCORE IS : %d/10  ####################\033[0m\n", count);
+	printf("\033[1;32m ############YOUR SCORE IS : %d/11  ####################\033[0m\n", count);
 
 	if (countf != 30)
 		printf("\n\n\033[1;31m###############\tFINAL SCORE : %d/30  (MUST RETRY ...)\t###############\033[0m\n", countf);

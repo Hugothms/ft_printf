@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 16:07:56 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/06 17:47:29 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/10 14:13:31 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	ft_get_flags(const char *fmt, t_sp *sp, t_f *f)
 {
 	while (in_charset(fmt[sp->index], "-0"))
 	{
-		if (fmt[sp->index] == '-' && !f->za)
+		if (fmt[sp->index] == '-' && !f->minus)
 		{
-			f->za = 1;
-			f->zb = 0;
+			f->minus = 1;
+			f->zero = 0;
 		}
-		else if (fmt[sp->index] == '0' && !f->zb && !f->za)
-			f->zb = 1;
+		else if (fmt[sp->index] == '0' && !f->zero && !f->minus)
+			f->zero = 1;
 		sp->index++;
 	}
 }
@@ -35,7 +35,7 @@ void	ft_get_width(const char *fmt, t_sp *sp, t_f *f, va_list arg)
 		if (f->width < 0)
 		{
 			f->width *= -1;
-			f->za = 1;
+			f->minus = 1;
 		}
 		sp->index++;
 	}
@@ -58,7 +58,7 @@ void	ft_get_precision(const char *fmt, t_sp *sp, t_f *f, va_list arg)
 			if (f->pr < 0)
 			{
 				f->pr *= -1;
-				f->zb = 1;
+				f->minus = 1;
 			}
 			sp->index++;
 		}
