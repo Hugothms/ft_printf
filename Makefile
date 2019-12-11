@@ -6,7 +6,7 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 13:45:08 by hthomas           #+#    #+#              #
-#    Updated: 2019/12/10 14:44:30 by hthomas          ###   ########.fr        #
+#    Updated: 2019/12/10 16:12:00 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,7 @@ all:		$(NAME)
 
 $(NAME):		$(LIBFT) $(OBJS) $(INCLUDES)
 	#@echo "Creating $(GREEN_FG)libftprintf.a$(CLEAR_COLOR)"
-	ar rcs $@ $(OBJS) $(INCLUDES) $(LIBFTDIR)/*.o
+	ar rcs $@ $(OBJS)
 	ranlib $@
 	#@echo "$(GREEN_BG)$(BLACK_FG)Done$(CLEAR_COLOR)"
 
@@ -92,6 +92,23 @@ fclean:		clean
 re:		fclean all
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .c.o:
 	${CC} ${CFLAGS} -I$(INCLUDES) -c $< -o ${<:.c=.o}
 
@@ -107,7 +124,7 @@ test_hardcore: $(EXEC_HARDCORE)
 	./$<
 
 $(EXEC_HARDCORE):	$(NAME) main_hardcore.c
-	$(C) $(CFLAGS) -o $@ main_hardcore.c -L./ -lftprintf
+	$(C) -o $@ main_hardcore.c $(SRCS) -L./ -lftprintf
 
 
 test_test: $(EXEC_test)

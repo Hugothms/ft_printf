@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 20:25:55 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/10 14:40:59 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/10 16:44:12 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,13 @@ t_f		*init_f(void)
 		return (NULL);
 	f->zero = 0;
 	f->minus = 0;
+	f->precision =0;
 	f->pr = 0;
 	f->width = 0;
 	return (f);
+}
+
+void	free_f(t_f *f)
+{
+	free(f);
 }

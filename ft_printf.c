@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:42:33 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/10 14:20:42 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/10 18:10:03 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,56 +32,56 @@ char	*ft_conversion(const char *fmt, va_list arg, t_sp *sp)
 		return (ft_chardup('%'));
 	return (NULL);
 }
-#include<stdio.h>
+
+void	ft_put_clean(t_sp *sp, t_f *f, char *str)
+{
+	if (!f->pr && !ft_strcmp(str,"0"))
+		sp->len--;
+	else if (!f->pr && !ft_strcmp(str,"0x0"))
+	{
+		ft_putstrn(str,  2);
+		sp->len -= 1;
+	}
+	else if (!f->pr && !ft_strcmp(str,"(null)"))
+		sp->len -= 6;
+	else if (sp->i)
+		ft_putstr(str);
+	else
+	{
+		ft_putstrn(str,  f->width > f->pr ? f->pr : f->pr);
+		sp->len -= ft_strlen(str) - f->pr + 1;
+	}
+}
+
 void ft_show(t_sp *sp, t_f *f, char *str)
 {
 	int				len;
 
 	len = ft_strlen(str);
-	/*if (f->zero && f->width > f->pr)
-		f->pr ? ft_spaces(f->width, sp, f->pr) : ft_zeros(f->width, sp, len);
-	else if (f->width)
-	{
-		if (*str == '-' && sp->i)
-		{
-			ft_putchar('-');
-			str++;
-			sp->len++;
-			//f->pr--;
-		}
-		ft_zeros(f->width, sp, f->pr ? f->pr : len);
-	}
-	if ((f->zero || f->minus) && f->pr > len)
-		ft_zeros(f->pr, sp, len);*/
 	if (f->width)
 	{
-		if (*str == '-' && sp->i)
+		if (*str == '-' && sp->i && f->precision)
 		{
 			ft_putchar('-');
 			str++;
 			f->pr++;
 		}
 		if (f->zero)
-			ft_zeros(f->width, sp, f->pr ? f->pr : len);
+			ft_zeros(f->width, sp, f->precision ? f->pr : len);
 		else if (!f->minus)
-			ft_spaces(f->width, sp, f->pr ? f->pr : len);
+			ft_spaces(f->width, sp, f->precision && f->pr ? f->pr : len);
 	}
-	if (f->pr && (sp->i || sp->u || sp->h))
+	if (f->precision && (sp->i || sp->u || sp->h))
 		ft_zeros(f->pr, sp, len);
-
-	//printf("%d %d %d %d\n", f->width, f->pr,f->zero, f->minus);
-	if (sp->s && f->pr)
-		ft_putstrn(str, f->pr);
+	if (f->width || f->precision)
+		ft_put_clean(sp, f, str);
 	else
 		ft_putstr(str);
-	/*if (f->minus && f->width && f->width > f->pr)
-		ft_spaces(f->width, sp, f->pr ? f->pr : len);*/
 	if (f->width)
 	{
 		if (f->minus)
-			ft_spaces(f->width, sp, f->pr ? f->pr : len);
+			ft_spaces(f->width, sp, f->precision ? f->pr : len);
 	}
-
 }
 
 
@@ -99,11 +99,12 @@ int		ft_printf_continue(const char *fmt, va_list arg, t_sp *sp)
 	if(!(str = ft_conversion(fmt, arg, sp)))
 		return (ERR);
 	tmp = ft_strlen(str);
-	if (sp->s && f->pr && f->pr < tmp)
+	if (sp->s && f->precision && f->pr < tmp)
 		tmp = f->pr;
 	sp->len += tmp;
 	ft_show(sp, f, str);
 	free(str);
+	//free(f);
 	return (OK);
 }
 
@@ -133,13 +134,3 @@ int		ft_printf(const char *fmt, ...)
 	va_end(arg);
 	return (len);
 }
-
-
-/*
-
-flag:-
-w:20
-p:15
-len:6
--000000000012345
-*/

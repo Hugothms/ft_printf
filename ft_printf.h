@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:44:08 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/10 14:01:12 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/10 16:39:30 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct		s_flags
 {
 	int				zero;
 	int				minus;
+	int				precision;
 	int				width;
 	int				pr;
 }					t_f;
