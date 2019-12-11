@@ -6,12 +6,13 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:40:45 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/06 17:27:47 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/11 18:07:07 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include<stdio.h>
+
 int	main(void)
 {
 	int ret;
@@ -20,12 +21,12 @@ int	main(void)
 	int countf=0;
 	// void	*ptr2 = "ok";
 	void	*ptr3 = NULL;
-	// int	c;
+	int		c = 'a';
 
-	printf("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^TEST 23\n");
-	ret = printf("%.1s\n", ptr3);
+	printf("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
+	ret = printf("\"%c\"", 0);
 	printf("\n\033[0;36mExpected return =\t%d ! \033[0m\n", ret);
-	ret2 = ft_printf("%.1s\n", ptr3);
+	ret2 = ft_printf("\"%c\"", 0);
 	printf("\n\033[0;36mYour return =\t\t%d ! \033[0m\n", ret2);
 	if (ret == ret2)
 	{

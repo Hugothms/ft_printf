@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:44:08 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/10 16:39:30 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/11 18:10:16 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,26 @@ typedef struct		s_flags
 {
 	int				zero;
 	int				minus;
+	unsigned int	width;
 	int				precision;
-	int				width;
-	int				pr;
+	unsigned int	pr;
 }					t_f;
 
 int					ft_printf(const char *format, ...);
 
-char				*ft_char(va_list arg, t_sp *sp);
-char				*ft_string(va_list arg, t_sp *sp);
-char				*ft_pointer(va_list arg, t_sp *sp);
-char				*ft_integer(va_list arg, t_sp *sp);
-char				*ft_unsigned_int(va_list arg, t_sp *sp);
-char				*ft_hex(va_list arg, t_sp *sp, int uppercase);
+char				*ft_char(va_list arg, t_sp *sp, t_f *f);
+char				*ft_string(va_list arg, t_sp *sp, t_f *f);
+char				*ft_pointer(va_list arg, t_sp *sp, t_f *f);
+char				*ft_integer(va_list arg, t_sp *sp, t_f *f);
+char				*ft_unsigned_int(va_list arg, t_sp *sp, t_f *f);
+char				*ft_hex(va_list arg, t_sp *sp, t_f *f, int uppercase);
 
 t_sp				*init_sp(void);
 t_sp				*reset_sp(t_sp *sp);
 void				free_sp(t_sp *sp);
 t_f					*init_f(void);
 
+char				*ft_concat(int before, char *str, int length, char c);
 void				ft_zeros(int size, t_sp *sp, int len);
 void				ft_spaces(int width, t_sp *sp, int len);
 
