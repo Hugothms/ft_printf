@@ -1752,10 +1752,10 @@ int main() {
 		printf("                                             \033[1;33mretour clakéosol\t: %d\033[0m\n", i);
 
 		printf("\033[0;36m======================= TEST\033[0m 163\n");
-		i = printf("ultimate2 %*d %*s %*x %*X %*i %*u.\n", 1, 500, 1, "hey", 10, 54700, 1, 300, 1000, -55, 1, -60);
+		i = printf("%*i.\n", 10, -55);
 			fflush(stdout);
 		printf("                                             \033[1;33mretour officiel\t: %d\033[0m\n", i);
-		i = ft_printf("ultimate2 %*d %*s %*x %*X %*i %*u.\n", 1, 500, 1, "hey", 10, 54700, 1, 300, 1000, -55, 1, -60);
+		i = ft_printf("%*i.\n", 10, -55);
 		printf("                                             \033[1;33mretour clakéosol\t: %d\033[0m\n", i);
 
 		printf("\033[0;36m======================= TEST\033[0m 164\n");
@@ -1803,10 +1803,32 @@ int main() {
 		ft_printf("{%0*.*d}\n", 5, -15, 42);
 		   printf("\"%*.*s\"\n", 10, 8, "42hugothomas");
 		ft_printf("\"%*.*s\"\n", 10, 8, "42hugothomas");
+
 		i = printf("%05d", -42);
 			fflush(stdout);
 		printf("\033\t[1;33mretour officiel \t: %d\033[0m\n", i);
 		i = ft_printf("%05d", -42);
 		printf("\033\t[1;33mretour clakéosol\t: %d\033[0m\n", i);
-	return (0);
+
+		i = printf("%04d", -42);
+			fflush(stdout);
+		printf("\033\t[1;33mretour officiel \t: %d\033[0m\n", i);
+		i = ft_printf("%04d", -42);
+		printf("\033\t[1;33mretour clakéosol\t: %d\033[0m\n", i);
+
+
+		i = printf("%03d", -42);
+			fflush(stdout);
+		printf("\033\t[1;33mretour officiel \t: %d\033[0m\n", i);
+		i = ft_printf("%03d", -42);
+		printf("\033\t[1;33mretour clakéosol\t: %d\033[0m\n", i);
+
+
+		i = printf("%02d", -42);
+			fflush(stdout);
+		printf("\033\t[1;33mretour officiel \t: %d\033[0m\n", i);
+		i = ft_printf("%02d", -42);
+		printf("\033\t[1;33mretour clakéosol\t: %d\033[0m\n", i);
+
+		return (0);
 }
