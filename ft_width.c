@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 15:26:20 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/11 17:50:05 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/12 14:12:40 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,32 +36,4 @@ char	*ft_concat(int after, char *str, int width, char c)
 		//free(tmp);
 	}
 	return (str);
-}
-
-void	ft_zeros(int width, t_sp *sp, int len)
-{
-	int	i;
-
-	i = width - len;
-	if (i < 0)
-		return ;
-	while (i--)
-	{
-		ft_putchar('0');
-		sp->len++;
-	}
-}
-
-void	ft_spaces(int width, t_sp *sp, int len)
-{
-	int	i;
-
-	i = width - len;
-	if (i < 0)
-		return ;
-	while (i--)
-	{
-		ft_putchar(' ');
-		sp->len++;
-	}
 }

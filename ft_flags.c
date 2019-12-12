@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 16:07:56 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/11 17:23:34 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/12 12:45:29 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,25 +49,27 @@ void	ft_get_width(const char *fmt, t_sp *sp, t_f *f, va_list arg)
 
 void	ft_get_precision(const char *fmt, t_sp *sp, t_f *f, va_list arg)
 {
+	int	i;
+
 	if (fmt[sp->index] == '.')
 	{
-		f->precision = 1;
 		sp->index++;
 		if (fmt[sp->index] == '*')
 		{
-			f->pr = va_arg(arg, int);
-			if (f->pr < 0)
-			{
-				f->precision = 0;
-				f->pr = 0;
-			}
 			sp->index++;
+			i = va_arg(arg, int);
 		}
 		else
 		{
-			f->pr = ft_atoi_no_sign(&fmt[sp->index]);
+			i = ft_atoi(&fmt[sp->index]);
 			while (ft_isdigit(fmt[sp->index]))
 				sp->index++;
+		}
+		if (i >= 0)
+		{
+			f->precision = 1;
+			f->zero = 0;
+			f->pr = i;
 		}
 	}
 }

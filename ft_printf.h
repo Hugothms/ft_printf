@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:44:08 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/11 18:10:16 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/12 14:01:42 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ typedef struct		s_flags
 {
 	int				zero;
 	int				minus;
-	unsigned int	width;
+	int				width;
 	int				precision;
-	unsigned int	pr;
+	int				pr;
 }					t_f;
 
 int					ft_printf(const char *format, ...);
@@ -49,6 +49,7 @@ char				*ft_pointer(va_list arg, t_sp *sp, t_f *f);
 char				*ft_integer(va_list arg, t_sp *sp, t_f *f);
 char				*ft_unsigned_int(va_list arg, t_sp *sp, t_f *f);
 char				*ft_hex(va_list arg, t_sp *sp, t_f *f, int uppercase);
+char				*ft_percent(t_sp *sp, t_f *f);
 
 t_sp				*init_sp(void);
 t_sp				*reset_sp(t_sp *sp);
