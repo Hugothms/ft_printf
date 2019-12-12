@@ -6,12 +6,12 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 13:45:08 by hthomas           #+#    #+#              #
-#    Updated: 2019/12/12 14:58:05 by hthomas          ###   ########.fr        #
+#    Updated: 2019/12/12 15:27:45 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 C = gcc
-CFLAGS += -Wall -Werror -Wextra -pedantic -g -fsanitize=address
+CFLAGS += -Wall -Werror -Wextra
 LDFLAGS +=  -fsanitize=address
 
 SRCS = 	srcs/ft_printf.c			\
@@ -28,11 +28,15 @@ SRCS = 	srcs/ft_printf.c			\
 		srcs/ft_atoi_no_sign.c
 
 OBJS = $(SRCS:.c=.o)
+OBJSLIBFT =$(LIBFTDIR)*.o
 NAME = libftprintf.a
-INCLUDES = ft_printf.h
+
+INCL = includes/
+HEADER = $(INCL)ft_printf.h
 
 LIBFT = libft.a
 LIBFTDIR = libft/
+LIBFTLINK = -L./ -lftprintf
 MAKE = make
 
 EXEC = test.out
@@ -41,6 +45,7 @@ EXEC_test = test_test.out
 EXEC_precise = precise.out
 
 
+CC = clang
 
 
 
@@ -66,29 +71,33 @@ CLEAR_COLOR =	\033[m
 ###########################
 
 
-all:		$(NAME)
+all : complib $(NAME)
 
-$(NAME):		$(LIBFT) $(OBJS) $(INCLUDES)
-	@#echo "Creating $(GREEN_FG)libftprintf.a$(CLEAR_COLOR)"
-	@ar rcs $@ $(OBJS)
-	@ranlib $@
-	@#echo "$(GREEN_BG)$(BLACK_FG)Done$(CLEAR_COLOR)"
+$(OBJS) : %.o: %.c $(HEADER)
+	@$(CC) $(CFLAGS) -I $(INCL) -c $< -o $@
+
+$(NAME) : $(OBJS)
+	@ar rcs $@ $(OBJS) $(OBJSLIBFT)
+
+complib :
+	@$(MAKE) -C libft all
 
 
-$(LIBFT):	$(LIBFTDIR)*.c $(LIBFTDIR)*.h
-	@#echo "Compiling $(GREEN_FG).c $(CLEAR_COLOR)in $(YELLOW_BG)$(BLACK_FG)libft/$(CLEAR_COLOR)"
-	@cd $(LIBFTDIR) && $(MAKE)
-	@cp $(LIBFTDIR)$@ ./$(NAME)
+
+
+
+
+
 
 clean:
 	@#echo "$(REDL_FG)Deleting .o$(CLEAR_COLOR)"
-	@cd $(LIBFTDIR) && $(MAKE) clean
-	@rm -rf $(OBJS) $(LIBFT)
+	cd $(LIBFTDIR) && $(MAKE) clean
+	rm -rf $(OBJS) $(LIBFT)
 
 fclean:		clean
 	@#echo "$(RED_FG)Deleting exe$(CLEAR_COLOR)"
-	@cd $(LIBFTDIR) && $(MAKE) fclean
-	@rm -f $(NAME) $(EXEC) $(EXEC_HARDCORE) $(EXEC_test) $(EXEC_precise)
+	cd $(LIBFTDIR) && $(MAKE) fclean
+	rm -f $(NAME) $(EXEC) $(EXEC_HARDCORE) $(EXEC_test) $(EXEC_precise)
 
 re:		fclean all
 
