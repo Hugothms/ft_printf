@@ -6,13 +6,13 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 15:26:20 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/12 16:06:10 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/12 17:57:16 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-char	*ft_concat(int after, char *str, int width, char c)
+char	*ft_cat(int after, char *str, int width, char c)
 {
 	char	*justification;
 	char	*tmp;
@@ -33,7 +33,7 @@ char	*ft_concat(int after, char *str, int width, char c)
 		else
 			str = ft_strjoin(justification, tmp);
 		free(justification);
-		//free(tmp);
+		free(tmp);
 	}
 	return (str);
 }

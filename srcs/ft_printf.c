@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:42:33 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/12 17:05:29 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/12 17:55:49 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,12 @@ int		ft_printf_continue(const char *fmt, va_list arg, t_sp *sp)
 	ft_get_flags(fmt, sp, f);
 	ft_get_width(fmt, sp, f, arg);
 	ft_get_precision(fmt, sp, f, arg);
-	if(!(str = ft_conversion(fmt, arg, sp, f)))
+	if (!(str = ft_conversion(fmt, arg, sp, f)))
 		return (ERR);
 	sp->len += ft_strlen(str);
 	ft_putstr(str);
-	//ft_show(sp, f, str);
-	//free(str);
-	//free(f);
+	free(str);
+	free(f);
 	return (OK);
 }
 

@@ -6,13 +6,13 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 08:15:50 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/12 17:27:42 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/12 17:58:07 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int				ft_count_len_nbr_l(unsigned long n, char *base_to)
+int		ft_count_len_nbr_l(unsigned long n, char *base_to)
 {
 	int		res;
 
@@ -27,7 +27,7 @@ int				ft_count_len_nbr_l(unsigned long n, char *base_to)
 	return (res);
 }
 
-char			*fill_positivenbr_base(unsigned long nbr, char *base, char *res, int i)
+char	*fill_positivenbr_base(unsigned long nbr, char *base, char *res, int i)
 {
 	int		size;
 
@@ -42,7 +42,7 @@ char			*fill_positivenbr_base(unsigned long nbr, char *base, char *res, int i)
 	return (res);
 }
 
-char			*fill_nbr_base(char *res, unsigned long nbr, char *base)
+char	*fill_nbr_base(char *res, unsigned long nbr, char *base)
 {
 	int		i;
 	int		size;
@@ -58,7 +58,7 @@ char			*fill_nbr_base(char *res, unsigned long nbr, char *base)
 	return (res);
 }
 
-char			*ft_strrev_minus_1(char *res)
+char	*ft_strrev_minus_1(char *res)
 {
 	int			i;
 	char		c;
@@ -75,7 +75,7 @@ char			*ft_strrev_minus_1(char *res)
 	return (res);
 }
 
-char			*ft_ltoa_base(unsigned long nb, char *base_to)
+char	*ft_ltoa_base(unsigned long nb, char *base_to)
 {
 	char		*res;
 

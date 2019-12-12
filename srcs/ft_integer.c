@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/12 17:35:37 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/12 17:50:17 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*precision_integer(char *str, t_sp *sp, t_f *f)
 		}
 		else if (sp->i < 0 && f->precision && f->pr >= len)
 		{
-			if (!(str = ft_concat(0, str, f->pr, '0')))
+			if (!(str = ft_cat(0, str, f->pr, '0')))
 				return (NULL);
 			str[f->pr - len] = '0';
 			if (!(str = ft_strjoin(ft_chardup('-'), str)))
@@ -34,7 +34,7 @@ char	*precision_integer(char *str, t_sp *sp, t_f *f)
 		}
 		else
 		{
-			if (!(str = ft_concat(0, str, f->pr, '0')))
+			if (!(str = ft_cat(0, str, f->pr, '0')))
 				return (NULL);
 		}
 	}
@@ -55,7 +55,7 @@ char	*ft_integer(va_list arg, t_sp *sp, t_f *f)
 		len = ft_strlen(str);
 		if (sp->i < 0 && f->width > len && f->zero)
 		{
-			if (!(str = ft_concat(0, str, f->width - 1, '0')))
+			if (!(str = ft_cat(0, str, f->width - 1, '0')))
 				return (NULL);
 			str[f->width - len - 1] = '0';
 			if (!(str = ft_strjoin(ft_chardup('-'), str)))
@@ -63,8 +63,8 @@ char	*ft_integer(va_list arg, t_sp *sp, t_f *f)
 		}
 		else
 		{
-			if (!(str = ft_concat(f->minus, str, f->width, f->zero ? '0' : ' ')))
-			return (NULL);
+			if (!(str = ft_cat(f->minus, str, f->width, f->zero ? '0' : ' ')))
+				return (NULL);
 		}
 	}
 	return (str);

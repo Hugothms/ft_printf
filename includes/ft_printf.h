@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:44:08 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/12 16:03:31 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/12 17:50:17 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_sp				*reset_sp(t_sp *sp);
 void				free_sp(t_sp *sp);
 t_f					*init_f(void);
 
-char				*ft_concat(int before, char *str, int length, char c);
+char				*ft_cat(int before, char *str, int length, char c);
 void				ft_zeros(int size, t_sp *sp, int len);
 void				ft_spaces(int width, t_sp *sp, int len);
 
