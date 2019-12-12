@@ -6,3 +6,4 @@ a.out*
 *.a
 printf.code-workspace
 *.out*
+test-printf/*
