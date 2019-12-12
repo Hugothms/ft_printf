@@ -6,7 +6,7 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 13:45:08 by hthomas           #+#    #+#              #
-#    Updated: 2019/12/12 14:04:15 by hthomas          ###   ########.fr        #
+#    Updated: 2019/12/12 14:58:05 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,18 +14,18 @@ C = gcc
 CFLAGS += -Wall -Werror -Wextra -pedantic -g -fsanitize=address
 LDFLAGS +=  -fsanitize=address
 
-SRCS = 	ft_printf.c			\
-		ft_s_printf_utils.c	\
-		ft_char.c			\
-		ft_hex.c			\
-		ft_integer.c		\
-		ft_pointer.c		\
-		ft_string.c			\
-		ft_unsigned_int.c	\
-		ft_percent.c		\
-		ft_width.c			\
-		ft_flags.c			\
-		ft_atoi_no_sign.c
+SRCS = 	srcs/ft_printf.c			\
+		srcs/ft_s_printf_utils.c	\
+		srcs/ft_char.c				\
+		srcs/ft_hex.c				\
+		srcs/ft_integer.c			\
+		srcs/ft_pointer.c			\
+		srcs/ft_string.c			\
+		srcs/ft_unsigned_int.c		\
+		srcs/ft_percent.c			\
+		srcs/ft_width.c				\
+		srcs/ft_flags.c				\
+		srcs/ft_atoi_no_sign.c
 
 OBJS = $(SRCS:.c=.o)
 NAME = libftprintf.a
