@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:40:45 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/12 17:34:09 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/12 17:43:15 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ int	main(void)
 	void	*ptr3 = NULL;
 	int		c = 'a';
 
-	ret = printf("|%.0u|", 5);
+	ret = printf("|%0-10d|", 42);
 	printf("\n\033[0;36mreturn = %d\033[0m\n", ret);
 
-	ret2 = ft_printf("|%.0u|", 5);
+	ret2 = ft_printf("|%0-10d|", 42);
 	printf("\n\033[0;36mreturn = %d\033[0m\n", ret2);
 
 	// if (ret == ret2)

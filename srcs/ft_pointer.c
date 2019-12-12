@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/12 17:26:56 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/12 17:38:35 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_pointer(va_list arg, t_sp *sp, t_f *f)
 	//printf("\n%s,%zu\n", str, ft_strlen(str));
 	if (f->precision)
 	{
-		if (!sp->i && !f->pr)
+		if (!sp->p && !f->pr)
 		{
 			if (!(str = ft_chardup('\0')))
 				return (NULL);

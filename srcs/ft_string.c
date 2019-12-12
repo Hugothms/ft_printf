@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/12 16:06:10 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/12 17:38:42 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_string(va_list arg, t_sp *sp, t_f *f)
 	}
 	if (f->precision)
 	{
-		if (!sp->i && !f->pr)
+		if (!sp->s && !f->pr)
 		{
 			if (!(str = ft_chardup('\0')))
 				return (NULL);
