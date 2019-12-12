@@ -6,19 +6,17 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 08:15:50 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/12 16:08:15 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/12 17:27:42 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int				ft_count_len_nbr_l(long n, char *base_to)
+int				ft_count_len_nbr_l(unsigned long n, char *base_to)
 {
 	int		res;
 
 	res = 0;
-	if (n < 0)
-		res++;
 	if (n == 0)
 		return (1);
 	while (n)
@@ -29,7 +27,7 @@ int				ft_count_len_nbr_l(long n, char *base_to)
 	return (res);
 }
 
-char			*fill_positivenbr_base(long nbr, char *base, char *res, int i)
+char			*fill_positivenbr_base(unsigned long nbr, char *base, char *res, int i)
 {
 	int		size;
 
@@ -44,7 +42,7 @@ char			*fill_positivenbr_base(long nbr, char *base, char *res, int i)
 	return (res);
 }
 
-char			*fill_nbr_base(char *res, long nbr, char *base, int sign)
+char			*fill_nbr_base(char *res, unsigned long nbr, char *base)
 {
 	int		i;
 	int		size;
@@ -53,8 +51,6 @@ char			*fill_nbr_base(char *res, long nbr, char *base, int sign)
 	while (base[size])
 		size++;
 	i = 0;
-	if (sign < 0)
-		res[i++] = '-';
 	if (nbr != 0)
 		res = fill_positivenbr_base(nbr, base, res, i);
 	else if (nbr == 0)
@@ -68,7 +64,7 @@ char			*ft_strrev_minus_1(char *res)
 	char		c;
 	int			len;
 
-	i = (res[0] == '-' ? 1 : 0);
+	i = 0;
 	len = ft_strlen(res) - 1;
 	while (i < len)
 	{
@@ -79,21 +75,15 @@ char			*ft_strrev_minus_1(char *res)
 	return (res);
 }
 
-char			*ft_ltoa_base(long nb, char *base_to)
+char			*ft_ltoa_base(unsigned long nb, char *base_to)
 {
 	char		*res;
-	int			sign;
 
 	if (!check_base(base_to))
 		return (0);
-	sign = 1;
-	if (nb < 0)
-	{
-		nb *= -1;
-		sign = -1;
-	}
-	if (!(res = malloc((ft_count_len_nbr_l(nb, base_to)) * sizeof(char))))
+	if (!(res = malloc((ft_count_len_nbr_l(nb, base_to) + 1) * sizeof(char))))
 		return (0);
-	fill_nbr_base(res, nb, base_to, sign);
+	res[ft_count_len_nbr_l(nb, base_to)] = '\0';
+	fill_nbr_base(res, nb, base_to);
 	return (ft_strrev_minus_1(res));
 }

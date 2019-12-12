@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:42:33 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/12 15:18:01 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/12 17:05:29 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_conversion(const char *fmt, va_list arg, t_sp *sp, t_f *f)
 		return (ft_hex(arg, sp, f, 1));
 	else if (fmt[sp->index] == 'X')
 		return (ft_hex(arg, sp, f, 0));
-	if (in_charset(fmt[sp->index], "cspdiuxX%"))
+	else if (fmt[sp->index] == '%')
 		return (ft_percent(sp, f));
 	return (NULL);
 }

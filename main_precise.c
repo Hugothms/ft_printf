@@ -6,12 +6,13 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:40:45 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/12 15:59:18 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/12 17:34:09 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
 #include<stdio.h>
+#include<limits.h>
 
 int	main(void)
 {
@@ -23,10 +24,10 @@ int	main(void)
 	void	*ptr3 = NULL;
 	int		c = 'a';
 
-	ret = printf("|%p|", (void*)-1);
+	ret = printf("|%.0u|", 5);
 	printf("\n\033[0;36mreturn = %d\033[0m\n", ret);
 
-	ret2 = ft_printf("|%p|", (void*)-1);
+	ret2 = ft_printf("|%.0u|", 5);
 	printf("\n\033[0;36mreturn = %d\033[0m\n", ret2);
 
 	// if (ret == ret2)
