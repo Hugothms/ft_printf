@@ -6,11 +6,11 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 15:26:20 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/12 14:12:40 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/12 16:06:10 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 char	*ft_concat(int after, char *str, int width, char c)
 {

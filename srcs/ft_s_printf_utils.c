@@ -6,11 +6,11 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 20:25:55 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/10 16:44:12 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/12 16:06:10 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 t_sp	*init_sp(void)
 {

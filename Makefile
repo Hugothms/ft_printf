@@ -6,7 +6,7 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 13:45:08 by hthomas           #+#    #+#              #
-#    Updated: 2019/12/12 15:27:45 by hthomas          ###   ########.fr        #
+#    Updated: 2019/12/12 16:01:38 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,13 +36,13 @@ HEADER = $(INCL)ft_printf.h
 
 LIBFT = libft.a
 LIBFTDIR = libft/
-LIBFTLINK = -L./ -lftprintf
 MAKE = make
 
 EXEC = test.out
 EXEC_HARDCORE = test_hardcore.out
 EXEC_test = test_test.out
 EXEC_precise = precise.out
+LIBLINK = -L./ -lftprintf
 
 
 CC = clang
@@ -147,4 +147,8 @@ test_precise: $(EXEC_precise)
 	@./$<
 
 $(EXEC_precise):	$(NAME) main_precise.c
-	@$(C) $(LDFLAGS) -o $@ main_precise.c $(SRCS) -L./ -lftprintf
+	@clear
+	@$(C) $(LDFLAGS) -o $@ main_precise.c $(LIBLINK)
+
+
+.PHONY:	$(EXEC_precise)

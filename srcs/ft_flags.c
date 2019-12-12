@@ -6,11 +6,11 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 16:07:56 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/12 12:45:29 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/12 16:06:10 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 void	ft_get_flags(const char *fmt, t_sp *sp, t_f *f)
 {
