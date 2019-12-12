@@ -6,7 +6,7 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 13:45:08 by hthomas           #+#    #+#              #
-#    Updated: 2019/12/11 17:18:31 by hthomas          ###   ########.fr        #
+#    Updated: 2019/12/12 12:04:47 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -124,7 +124,7 @@ test_hardcore: $(EXEC_HARDCORE)
 	./$<
 
 $(EXEC_HARDCORE):	$(NAME) main_hardcore.c
-	$(C) -o $@ main_hardcore.c $(SRCS) -L./ -lftprintf
+	$(C) -o  $@ main_hardcore.c $(SRCS) -L./ -lftprintf
 
 
 test_test: $(EXEC_test)

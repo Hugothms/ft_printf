@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 16:04:54 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/11 17:53:59 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/12 11:10:26 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_chardup(char c)
 
 	if (!(cpy = malloc((1 + 1) * sizeof(char))))
 		return (NULL);
-	ft_memcpy(cpy, &c, 1);
+	cpy[0] = c;
 	cpy[1] = '\0';
 	return (cpy);
 }
