@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 16:07:56 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/12 16:06:10 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/13 12:19:13 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_get_flags(const char *fmt, t_sp *sp, t_f *f)
 {
-	while (in_charset(fmt[sp->index], "-0"))
+	while (in_charset(fmt[sp->index], "-0# +"))
 	{
 		if (fmt[sp->index] == '-' && !f->minus)
 		{
@@ -23,6 +23,12 @@ void	ft_get_flags(const char *fmt, t_sp *sp, t_f *f)
 		}
 		else if (fmt[sp->index] == '0' && !f->zero && !f->minus)
 			f->zero = 1;
+		else if (fmt[sp->index] == '#')
+			f->hash = 1;
+		else if (fmt[sp->index] == ' ')
+			f->space = 1;
+		else if (fmt[sp->index] == '+')
+			f->plus = 1;
 		sp->index++;
 	}
 }
