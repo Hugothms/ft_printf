@@ -6,7 +6,7 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 13:45:08 by hthomas           #+#    #+#              #
-#    Updated: 2019/12/13 11:32:48 by hthomas          ###   ########.fr        #
+#    Updated: 2019/12/13 11:41:28 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,45 +82,27 @@ $(NAME) : $(OBJS)
 complib :
 	@$(MAKE) -C libft all
 
-
-
-
-
-
-
-
 clean:
 	@#echo "$(REDL_FG)Deleting .o$(CLEAR_COLOR)"
-	cd $(LIBFTDIR) && $(MAKE) clean
-	rm -rf $(OBJS) $(LIBFT)
+	@cd $(LIBFTDIR) && $(MAKE) clean
+	@rm -rf $(OBJS) $(LIBFT)
 
 fclean:		clean
 	@#echo "$(RED_FG)Deleting exe$(CLEAR_COLOR)"
-	cd $(LIBFTDIR) && $(MAKE) fclean
-	rm -f $(NAME) $(EXEC) $(EXEC_HARDCORE) $(EXEC_test) $(EXEC_precise)
+	@cd $(LIBFTDIR) && $(MAKE) fclean
+	@rm -f $(NAME) $(EXEC) $(EXEC_HARDCORE) $(EXEC_test) $(EXEC_precise)
 
 re:		fclean all
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .c.o:
-	${CC} ${CFLAGS} -I$(INCLUDES) -c $< -o ${<:.c=.o}
+	@${CC} ${CFLAGS} -I$(INCLUDES) -c $< -o ${<:.c=.o}
+
+.PHONY:	$(EXEC_precise)
+
+
+
+
+
 
 
 
@@ -149,6 +131,3 @@ test_precise: $(EXEC_precise)
 $(EXEC_precise):	$(NAME) main_precise.c
 	@clear
 	@$(C) $(CFLAGS) -o $@ main_precise.c $(LIBLINK)
-
-
-.PHONY:	$(EXEC_precise)
