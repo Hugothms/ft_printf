@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/12 17:50:17 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/13 17:44:01 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ char	*ft_unsigned_int(va_list arg, t_sp *sp, t_f *f)
 	{
 		if (!sp->u && !f->pr)
 		{
+			free(str);
 			if (!(str = ft_chardup('\0')))
 				return (NULL);
 		}

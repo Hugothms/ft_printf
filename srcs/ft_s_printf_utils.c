@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 20:25:55 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/13 12:09:36 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/13 17:49:45 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,4 @@ t_f		*init_f(void)
 	f->hash = 0;
 	f->plus = 0;
 	return (f);
-}
-
-void	free_f(t_f *f)
-{
-	free(f);
 }

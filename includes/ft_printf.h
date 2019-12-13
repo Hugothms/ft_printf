@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:44:08 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/13 17:11:04 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/13 17:53:49 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ char				*keep_position_sign(char *str);
 char				*ft_integer(va_list arg, t_sp *sp, t_f *f);
 
 int					ft_atoi_no_sign(const char *nptr);
-
 
 void				ft_get_flags(const char *fmt, t_sp *sp, t_f	*f);
 void				ft_get_width(const char *fmt, t_sp *sp, t_f	*f,
