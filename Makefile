@@ -6,19 +6,20 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 13:45:08 by hthomas           #+#    #+#              #
-#    Updated: 2019/12/13 13:32:33 by hthomas          ###   ########.fr        #
+#    Updated: 2019/12/13 17:13:02 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 C = gcc
 CFLAGS += -Wall -Werror -Wextra
-LDFLAGS +=  -fsanitize=address
+LDFLAGS += -g3 -fsanitize=address
 
 SRCS = 	srcs/ft_printf.c			\
 		srcs/ft_s_printf_utils.c	\
 		srcs/ft_char.c				\
 		srcs/ft_hex.c				\
 		srcs/ft_integer.c			\
+		srcs/ft_integer2.c			\
 		srcs/ft_pointer.c			\
 		srcs/ft_string.c			\
 		srcs/ft_unsigned_int.c		\
@@ -123,7 +124,7 @@ test_test: $(EXEC_test)
 	./$<
 
 $(EXEC_test): $(NAME) main_test.c
-	$(C) $(CFLAGS) -o $@ main_test.c -L./ -lftprintf
+	$(C) $(LDFLAGS) -o $@ main_test.c -L./ -lftprintf
 
 test_precise: $(EXEC_precise)
 	@./$<
