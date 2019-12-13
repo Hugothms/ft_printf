@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/13 17:15:35 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/13 18:39:37 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_integer(va_list arg, t_sp *sp, t_f *f)
 	}
 	if (!(str = width_integer(str, f)))
 		return (NULL);
-	if (sp->i < 0 || f->plus || f->space)
+	if ((sp->i < 0 || f->plus || f->space) && !f->minus)
 	{
 		if (!(str = keep_position_sign(str)))
 			return (NULL);
