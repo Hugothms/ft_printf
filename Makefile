@@ -6,7 +6,7 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 13:45:08 by hthomas           #+#    #+#              #
-#    Updated: 2019/12/12 16:01:38 by hthomas          ###   ########.fr        #
+#    Updated: 2019/12/13 11:32:48 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -148,7 +148,7 @@ test_precise: $(EXEC_precise)
 
 $(EXEC_precise):	$(NAME) main_precise.c
 	@clear
-	@$(C) $(LDFLAGS) -o $@ main_precise.c $(LIBLINK)
+	@$(C) $(CFLAGS) -o $@ main_precise.c $(LIBLINK)
 
 
 .PHONY:	$(EXEC_precise)
