@@ -6,18 +6,18 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/13 17:23:01 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/15 08:48:34 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-char	*ft_add_prefix(char *str, t_f *f, int uppercase)
+char	*ft_add_prefix(char *str, t_sp *sp, t_f *f, int uppercase)
 {
 	char	*tmp;
 	char	*tmpstr;
 
-	if (f->hash)
+	if (f->hash && sp->h)
 	{
 		tmp = str;
 		if (!(tmpstr = ft_strdup(uppercase ? "0x" : "0X")))
@@ -58,9 +58,10 @@ char	*ft_hex(va_list arg, t_sp *sp, t_f *f, int uppercase)
 	sp->h = va_arg(arg, unsigned int);
 	if (!(str = ft_uitoa_base(sp->h, uppercase ? bl : "0123456789ABCDEF")))
 		return (NULL);
-	if (!(str = ft_add_prefix(str, f, uppercase)))
+	if (!(str = ft_precision_hex(str, sp, f)))
 		return (NULL);
-	str = ft_precision_hex(str, sp, f);
+	if (!(str = ft_add_prefix(str, sp, f, uppercase)))
+		return (NULL);
 	if (f->width)
 	{
 		if (!(str = ft_cat(f->minus, str, f->width, f->zero ? '0' : ' ')))

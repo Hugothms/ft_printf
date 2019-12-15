@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:42:33 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/13 18:03:45 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/15 10:01:34 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,7 @@ char	*ft_conversion(const char *fmt, va_list arg, t_sp *sp, t_f *f)
 	else if (fmt[sp->index] == '%')
 		return (ft_percent(sp, f));
 	else if (fmt[sp->index] == 'n')
-	{
-		f->n = 1;
-		return (ft_integer(arg, sp, f));
-	}
+		return (ft_flag_n(arg, sp));
 	return (NULL);
 }
 
@@ -51,10 +48,7 @@ int		ft_printf_continue(const char *fmt, va_list arg, t_sp *sp)
 	if (!(str = ft_conversion(fmt, arg, sp, f)))
 		return (ERR);
 	sp->len += ft_strlen(str);
-	// if (f->n)
-	// 	write();
-	// else
-		ft_putstr(str);
+	ft_putstr(str);
 	free(str);
 	free(f);
 	return (OK);

@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:44:08 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/13 18:01:09 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/15 10:36:22 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct		s_flags
 	int				space;
 	int				hash;
 	int				plus;
-	int				n;
 }					t_f;
 
 int					ft_printf(const char *format, ...);
@@ -54,6 +53,7 @@ char				*ft_integer(va_list arg, t_sp *sp, t_f *f);
 char				*ft_unsigned_int(va_list arg, t_sp *sp, t_f *f);
 char				*ft_hex(va_list arg, t_sp *sp, t_f *f, int uppercase);
 char				*ft_percent(t_sp *sp, t_f *f);
+char				*ft_flag_n(va_list arg, t_sp *sp);
 
 t_sp				*init_sp(void);
 t_sp				*reset_sp(t_sp *sp);
@@ -65,7 +65,7 @@ char				*ft_add_sign(char *str, t_sp *sp, t_f *f);
 char				*precision_sign(char *str, t_f *f);
 char				*precision_integer(char *str, t_sp *sp, t_f *f);
 char				*width_integer(char *str, t_f *f);
-char				*keep_position_sign(char *str);
+char				*keep_position_sign(char *str, t_f *f);
 char				*ft_integer(va_list arg, t_sp *sp, t_f *f);
 
 int					ft_atoi_no_sign(const char *nptr);

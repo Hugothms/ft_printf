@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 16:07:56 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/13 18:01:42 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/15 11:23:15 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,9 @@ void	ft_get_flags(const char *fmt, t_sp *sp, t_f *f)
 {
 	while (in_charset(fmt[sp->index], "-0# +"))
 	{
-		if (fmt[sp->index] == '-' && !f->minus)
-		{
+		if (fmt[sp->index] == '-')
 			f->minus = 1;
-			f->zero = 0;
-		}
-		else if (fmt[sp->index] == '0' && !f->zero && !f->minus)
+		else if (fmt[sp->index] == '0')
 			f->zero = 1;
 		else if (fmt[sp->index] == '#')
 			f->hash = 1;
@@ -78,4 +75,15 @@ void	ft_get_precision(const char *fmt, t_sp *sp, t_f *f, va_list arg)
 			f->pr = i;
 		}
 	}
+}
+
+char	*ft_flag_n(va_list arg, t_sp *sp)
+{
+	/*int	*p;
+
+	p = va_arg(arg, unsigned long);
+	*p = sp->len;*/
+	(void)arg;
+	sp->index++;
+	return (ft_strdup(""));
 }

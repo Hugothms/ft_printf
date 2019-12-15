@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/13 18:34:32 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/15 11:33:49 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*precision_sign(char *str, t_f *f)
 	return (str);
 }
 
-char	*precision_integer(char *str, t_sp *sp, t_f *f)
+char *precision_integer(char *str, t_sp *sp, t_f *f)
 {
 	int		len;
 	int		condition;
@@ -87,30 +87,30 @@ char	*width_integer(char *str, t_f *f)
 	return (str);
 }
 
-char	*keep_position_sign(char *str)
+char	*keep_position_sign(char *str, t_f *f)
 {
-	int		isign;
-	int		ifirst;
-	char	c;
+	int		index_sign;
+	int		index_first;
 	int		foundsign;
 	int		foundfirst;
+	char	c;
 
-	isign = ft_strlen(str);
-	ifirst = 0;
-	while (ifirst < isign && !(foundfirst = in_charset(str[ifirst], "0+-")))
-		ifirst++;
-	while (isign && !(foundsign = in_charset(str[isign], " +-")))
-		isign--;
+	index_sign = f->minus ? 0 : ft_strlen(str);
+	index_first = 0;
+	while (index_first < (int)ft_strlen(str) && !(foundfirst = in_charset(str[index_first], "+-0")))
+		index_first++;
+	while ((f->minus ? index_sign < (int)ft_strlen(str) : index_sign) && !(foundsign = in_charset(str[index_sign], " +-")))
+		f->minus ? index_sign++ : index_sign--;
 	if (!foundfirst)
 	{
-		while (ifirst < isign && !in_charset(str[ifirst], " "))
-			ifirst++;
+		while (index_first < index_sign && !in_charset(str[index_first], " "))
+			index_first++;
 	}
 	if (foundsign && foundfirst)
 	{
-		c = str[isign];
-		str[isign] = str[ifirst];
-		str[ifirst] = c;
+		c = str[index_sign];
+		str[index_sign] = str[index_first];
+		str[index_first] = c;
 	}
 	return (str);
 }
