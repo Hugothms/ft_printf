@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/16 13:08:07 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/16 16:34:23 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,16 @@ char	*bandage(char *str)
 	return (str);
 }
 
-char	*creme(t_f *f)
+char	*creme(char *str, t_f *f)
 {
-	char	*str;
+	char	*tmp;
 	int		max;
 
 	max = f->width > f->pr ? f->width : f->pr;
+	tmp = str;
 	if (!(str = malloc((max + 1) * sizeof(char))))
 		return (NULL);
+	free(tmp);
 	str[max] = '\0';
 
 	return (str);
@@ -61,10 +63,14 @@ char	*creme(t_f *f)
 char	*ft_integer(va_list arg, t_sp *sp, t_f *f)
 {
 	char	*str;
+	int		ok;
 
 	sp->i = va_arg(arg, int);
+	if (sp->i < 0 && (ok = 1))
+		sp->i *= -1;
 	if (!(str = ft_itoa(sp->i)))
 		return (NULL);
+	sp->i *= (ok == 1 ? -1 : 1);
 	// ft_putstr("|");
 	// ft_putstr(str);
 	// ft_putstr("|");
@@ -76,22 +82,30 @@ char	*ft_integer(va_list arg, t_sp *sp, t_f *f)
 	// ft_putstr("|");
 	// ft_putstr(str);
 	// ft_putstr("|");
-	if (!(str = ft_add_sign(str, sp, f)))
-		return (NULL);
-	// ft_putstr("|");
-	// ft_putstr(str);
-	// ft_putstr("|");
-	if (!(str = width_integer(str, f)))
-		return (NULL);
-	// ft_putstr("|");
-	// ft_putstr(str);
-	// ft_putstr("|");
-	// if (!sp->i)
+	if (!f->zero)
 	{
-		if (!(str = keep_position_sign(str, !sp->i 	&&
-		f->plus && !f->minus && in_charset(' ', str))))
+		if (!(str = ft_add_sign(str, sp, f)))
 			return (NULL);
 	}
+	// ft_putstr("|");
+	// ft_putstr(str);
+	// ft_putstr("|");
+	if (!(str = width_integer(str, sp, f)))
+		return (NULL);
+	// ft_putstr("|");
+	// ft_putstr(str);
+	// ft_putstr("|");
+	if (f->zero)
+	{
+		if (!(str = ft_add_sign(str, sp, f)))
+			return (NULL);
+	}
+	// if (!sp->i)
+	// {
+	// 	if (!(str = keep_position_sign(str, !sp->i 	&&
+	// 	f->plus && !f->minus && in_charset(' ', str))))
+	// 		return (NULL);
+	// }
 	// ft_putstr("|");
 	// ft_putstr(str);
 	// ft_putstr("|");
@@ -100,15 +114,14 @@ char	*ft_integer(va_list arg, t_sp *sp, t_f *f)
 		if (!(str = pansement(str)))
 			return (NULL);
 	}
-	if (!sp->i && f->plus && !f->minus && ((!f->precision && f->width > 2) || (f->precision && (f->pr + 1 < f->width))))
-	{
-		if (!(str = bandage(str)))
-			return (NULL);
-	}
-	// if (!sp->i && f->plus && f->width && f->precision)
+	// if (!sp->i && f->plus && !f->minus && ((!f->precision && f->width > 2) || (f->precision && (f->pr + 1 < f->width))))
 	// {
-	// 	free(str);
-	// 	if (!(str = creme(f)))
+	// 	if (!(str = bandage(str)))
+	// 		return (NULL);
+	// }
+	// if (sp->i && f->plus && (!f->precision || ((f->width > f->pr) && f->precision)))
+	// {
+	// 	if (!(str = creme(str, f)))
 	// 		return (NULL);
 	// }
 	return (str);

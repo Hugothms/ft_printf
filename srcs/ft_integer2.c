@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/16 08:45:38 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/16 16:36:00 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*precision_integer(char *str, t_sp *sp, t_f *f)
 	}
 	else if (f->precision && f->pr >= len)
 	{
-		if (!(str = ft_cat(0, str, f->pr + (sp->i < 0), '0')))
+		if (!(str = ft_cat(0, str, f->pr, '0')))
 			return (NULL);
 	}
 	else
@@ -56,11 +56,13 @@ char	*ft_add_sign(char *str, t_sp *sp, t_f *f)
 {
 	char	*tmp;
 	char	*tmpchar;
+	char	positive;
 
-	if (sp->i >= 0 && (f->space || f->plus))
+	if (f->plus || f->space)
 	{
+		positive = f->space ? ' ' : '+';
 		tmp = str;
-		if (!(tmpchar = ft_chardup(f->space ? ' ' : '+')))
+		if (!(tmpchar = ft_chardup(sp->i >= 0 ? positive : '-')))
 			return (NULL);
 		if (!(str = ft_strjoin(tmpchar, str)))
 			return (NULL);
@@ -70,11 +72,12 @@ char	*ft_add_sign(char *str, t_sp *sp, t_f *f)
 	return (str);
 }
 
-char	*width_integer(char *str, t_f *f)
+char	*width_integer(char *str, t_sp *sp, t_f *f)
 {
 	if (f->width)
 	{
-		if (!(str = ft_cat(f->minus, str, f->width, f->zero ? '0' : ' ')))
+		if (!(str = ft_cat(f->minus, str,
+		f->width - ((sp->i <= 0) || f->plus || f->space), f->zero ? '0' : ' ')))
 			return (NULL);
 	}
 	return (str);

@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 10:02:50 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/16 13:29:40 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/16 15:47:19 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ int	main(void)
 	ret2 = ft_printf("|%+03i|\t|%+03i|\t|%+03i|\t%s", 1, -1, 0, "\xF0\x9F\x98\x8D \xF0\x9F\x99\x88 \xF0\x9F\x92\x96 \xF0\x9F\x8C\x9F \xE2\x9C\x85");
 	printf("\n\033[0;36mreturn = %d\033[0m\n\n\n", ret2);
 
+	ret = printf("|%+04i|\t|%+04i|\t|%+04i|\t%s", 10, -10, 0, "\xF0\x9F\x98\x8D \xF0\x9F\x99\x88 \xF0\x9F\x92\x96 \xF0\x9F\x8C\x9F \xE2\x9C\x85");
+	printf("\n\033[0;36mreturn = %d\033[0m\n", ret);
+	ret2 = ft_printf("|%+04i|\t|%+04i|\t|%+04i|\t%s", 10, -10, 0, "\xF0\x9F\x98\x8D \xF0\x9F\x99\x88 \xF0\x9F\x92\x96 \xF0\x9F\x8C\x9F \xE2\x9C\x85");
+	printf("\n\033[0;36mreturn = %d\033[0m\n\n\n", ret2);
 
 	ret = printf("|%+3.4i|\t|%+3.4i|\t|%+3.4i|\t%s", 10, -10, 0, "\xF0\x9F\x98\x8D \xF0\x9F\x99\x88 \xF0\x9F\x92\x96 \xF0\x9F\x8C\x9F \xE2\x9C\x85");
 	printf("\n\033[0;36mreturn = %d\033[0m\n", ret);
@@ -42,19 +46,14 @@ int	main(void)
 	ret2 = ft_printf("|%+3.3i|\t|%+3.3i|\t|%+3.3i|\t%s", 10, -10, 0, "\xF0\x9F\x98\x8D \xF0\x9F\x99\x88 \xF0\x9F\x92\x96 \xF0\x9F\x8C\x9F \xE2\x9C\x85");
 	printf("\n\033[0;36mreturn = %d\033[0m\n\n\n", ret2);
 
-	ret = printf("|%+04i|\t|%+04i|\t|%+04i|\t%s", 10, -10, 0, "\xF0\x9F\x98\x8D \xF0\x9F\x99\x88 \xF0\x9F\x92\x96 \xF0\x9F\x8C\x9F \xE2\x9C\x85");
+	ret = printf("|%3.2i|\t|%3.2i|\t|%3.2i|\t%s", 10, -10, 0, "\xF0\x9F\x98\x8D \xF0\x9F\x99\x88 \xF0\x9F\x92\x96 \xF0\x9F\x8C\x9F \xE2\x9C\x85");
 	printf("\n\033[0;36mreturn = %d\033[0m\n", ret);
-	ret2 = ft_printf("|%+04i|\t|%+04i|\t|%+04i|\t%s", 10, -10, 0, "\xF0\x9F\x98\x8D \xF0\x9F\x99\x88 \xF0\x9F\x92\x96 \xF0\x9F\x8C\x9F \xE2\x9C\x85");
+	ret2 = ft_printf("|%3.2i|\t|%3.2i|\t|%3.2i|\t%s", 10, -10, 0, "\xF0\x9F\x98\x8D \xF0\x9F\x99\x88 \xF0\x9F\x92\x96 \xF0\x9F\x8C\x9F \xE2\x9C\x85");
 	printf("\n\033[0;36mreturn = %d\033[0m\n\n\n", ret2);
 
-	ret = printf("|%+3.2i|\t|%+3.2i|\t|%+3.2i|\t%s", 10, -10, 0, "\xF0\x9F\x98\x8D \xF0\x9F\x99\x88 \xF0\x9F\x92\x96 \xF0\x9F\x8C\x9F \xE2\x9C\x85");
+	ret = printf("|%8.2i|\t|%8.2i|\t|%8.2i|\t%s", 10, -10, 0, "\xF0\x9F\x98\x8D \xF0\x9F\x99\x88 \xF0\x9F\x92\x96 \xF0\x9F\x8C\x9F \xE2\x9C\x85");
 	printf("\n\033[0;36mreturn = %d\033[0m\n", ret);
-	ret2 = ft_printf("|%+3.2i|\t|%+3.2i|\t|%+3.2i|\t%s", 10, -10, 0, "\xF0\x9F\x98\x8D \xF0\x9F\x99\x88 \xF0\x9F\x92\x96 \xF0\x9F\x8C\x9F \xE2\x9C\x85");
-	printf("\n\033[0;36mreturn = %d\033[0m\n\n\n", ret2);
-
-	ret = printf("|%+8.2i|\t|%+8.2i|\t|%+8.2i|\t%s", 10, -10, 0, "\xF0\x9F\x98\x8D \xF0\x9F\x99\x88 \xF0\x9F\x92\x96 \xF0\x9F\x8C\x9F \xE2\x9C\x85");
-	printf("\n\033[0;36mreturn = %d\033[0m\n", ret);
-	ret2 = ft_printf("|%+8.2i|\t|%+8.2i|\t|%+8.2i|\t%s", 10, -10, 0, "\xF0\x9F\x98\x8D \xF0\x9F\x99\x88 \xF0\x9F\x92\x96 \xF0\x9F\x8C\x9F \xE2\x9C\x85");
+	ret2 = ft_printf("|%8.2i|\t|%8.2i|\t|%8.2i|\t%s", 10, -10, 0, "\xF0\x9F\x98\x8D \xF0\x9F\x99\x88 \xF0\x9F\x92\x96 \xF0\x9F\x8C\x9F \xE2\x9C\x85");
 	printf("\n\033[0;36mreturn = %d\033[0m\n\n\n", ret2);
 
 	ret = printf("|%+2.1i|\t|%+2.1i|\t|%+2.1i|\t%s", 10, -10, 0, "\xF0\x9F\x98\x8D \xF0\x9F\x99\x88 \xF0\x9F\x92\x96 \xF0\x9F\x8C\x9F \xE2\x9C\x85");
@@ -73,7 +72,6 @@ int	main(void)
 	printf("\n\033[0;36mreturn = %d\033[0m\n\n\n", ret2);
 
 
-/*
 
 	ret = printf("|%+1.i|\t|%+1.i|\t|%+1.i|\t%s", 10, -10, 0, "\xF0\x9F\x98\x8D \xF0\x9F\x99\x88 \xF0\x9F\x92\x96 \xF0\x9F\x8C\x9F \xE2\x9C\x85");
 	printf("\n\033[0;36mreturn = %d\033[0m\n", ret);
@@ -95,6 +93,7 @@ int	main(void)
 	ret2 = ft_printf("|%+1i|\t|%+1i|\t|%+1i|\t%s", 10, -10, 0, "\xF0\x9F\x98\x8D \xF0\x9F\x99\x88 \xF0\x9F\x92\x96 \xF0\x9F\x8C\x9F \xE2\x9C\x85");
 	printf("\n\033[0;36mreturn = %d\033[0m\n\n\n", ret2);
 
+/*
 	ret = printf("|%1.i|\t|%1.i|\t|%1.i|\t%s", 10, -10, 0, "\xF0\x9F\x98\x8D \xF0\x9F\x99\x88 \xF0\x9F\x92\x96 \xF0\x9F\x8C\x9F \xE2\x9C\x85");
 	printf("\n\033[0;36mreturn = %d\033[0m\n", ret);
 	ret2 = ft_printf("|%1.i|\t|%1.i|\t|%1.i|\t%s", 10, -10, 0, "\xF0\x9F\x98\x8D \xF0\x9F\x99\x88 \xF0\x9F\x92\x96 \xF0\x9F\x8C\x9F \xE2\x9C\x85");
