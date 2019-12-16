@@ -6,13 +6,21 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/16 04:18:28 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/16 11:56:41 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
 char	*pansement(char *str)
+{
+	free(str);
+	if (!(str = ft_chardup('+')))
+		return (NULL);
+	return (str);
+}
+
+char	*bandage(char *str)
 {
 	int		is;
 	int		idf;
@@ -22,15 +30,17 @@ char	*pansement(char *str)
 
 	is = 0;
 	idf = 0;
-	while (idf < (int)ft_strlen(str) && !(fdf = in_charset(str[idf], " ")))
+	while (idf < (int)ft_strlen(str) &&
+	!(fdf = in_charset(str[idf], "0")))
 		idf++;
-	while (is < (int)ft_strlen(str) && !(fds = in_charset(str[is], "0")))
+	while (is < (int)ft_strlen(str) && !(fds = in_charset(str[is], "+")))
 		is++;
 	if (fds && fdf)
 	{
 		c = str[is];
 		str[is] = str[idf];
 		str[idf] = c;
+		return (str);
 	}
 	return (str);
 }
@@ -63,11 +73,20 @@ char	*ft_integer(va_list arg, t_sp *sp, t_f *f)
 	// ft_putstr("|");
 	// ft_putstr(str);
 	// ft_putstr("|");
-	if (!(str = keep_position_sign(str)))
+	if (!(str = keep_position_sign(str, !sp->i 	&&
+	f->plus && !f->minus && in_charset(' ', str))))
 		return (NULL);
-	if (!())
+	// ft_putstr("|");
+	// ft_putstr(str);
+	// ft_putstr("|");
+	if (!sp->i && f->plus && f->precision && !f->pr && f->width < 2)
 	{
 		if (!(str = pansement(str)))
+			return (NULL);
+	}
+	if (!sp->i && f->plus && !f->minus && f->precision && f->pr > 1 && (f->pr < f->width))
+	{
+		if (!(str = bandage(str)))
 			return (NULL);
 	}
 	return (str);

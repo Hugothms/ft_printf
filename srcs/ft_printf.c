@@ -6,32 +6,46 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:42:33 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/15 10:01:34 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/16 07:13:51 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
+void	fill_ftab(fptr *ftab)
+{
+	ftab[0] = &ft_char;
+	ftab[1] = &ft_string;
+	ftab[2] = &ft_pointer;
+	ftab[3] = &ft_integer;
+	ftab[4] = &ft_integer;
+	ftab[5] = &ft_unsigned_int;
+	ftab[6] = &ft_hex;
+	ftab[7] = &ft_hex;
+	ftab[8] = &ft_percent;
+	ftab[9] = &ft_flag_n;
+}
+
 char	*ft_conversion(const char *fmt, va_list arg, t_sp *sp, t_f *f)
 {
-	if (fmt[sp->index] == 'c')
-		return (ft_char(arg, sp, f));
-	else if (fmt[sp->index] == 's')
-		return (ft_string(arg, sp, f));
-	else if (fmt[sp->index] == 'p')
-		return (ft_pointer(arg, sp, f));
-	else if (fmt[sp->index] == 'd' || fmt[sp->index] == 'i')
-		return (ft_integer(arg, sp, f));
-	else if (fmt[sp->index] == 'u')
-		return (ft_unsigned_int(arg, sp, f));
-	else if (fmt[sp->index] == 'x')
-		return (ft_hex(arg, sp, f, 1));
-	else if (fmt[sp->index] == 'X')
-		return (ft_hex(arg, sp, f, 0));
-	else if (fmt[sp->index] == '%')
-		return (ft_percent(sp, f));
-	else if (fmt[sp->index] == 'n')
-		return (ft_flag_n(arg, sp));
+	fptr	ftab[NB_CONV];
+	char	*conversions;
+	int		i;
+
+	(void)arg;
+	conversions = "cspdiuxX\%n";
+	fill_ftab(ftab);
+	i = 0;
+	while (i < NB_CONV)
+	{
+		if (fmt[sp->index] == conversions[i])
+		{
+			if (fmt[sp->index] == 'X')
+				f->plus = 1;
+			return (ftab[i](arg, sp, f));
+		}
+		i++;
+	}
 	return (NULL);
 }
 

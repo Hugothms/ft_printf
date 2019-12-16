@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:44:08 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/16 03:44:58 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/16 08:00:52 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 # define ERR -1
 # define OK 1
+# define NB_CONV 10
 
 typedef struct		s_printf
 {
@@ -42,7 +43,9 @@ typedef struct		s_flags
 	int				space;
 	int				hash;
 	int				plus;
-}					t_f;
+}				t_f;
+
+typedef char*(*fptr)(va_list, t_sp*, t_f*);
 
 int					ft_printf(const char *format, ...);
 
@@ -51,9 +54,9 @@ char				*ft_string(va_list arg, t_sp *sp, t_f *f);
 char				*ft_pointer(va_list arg, t_sp *sp, t_f *f);
 char				*ft_integer(va_list arg, t_sp *sp, t_f *f);
 char				*ft_unsigned_int(va_list arg, t_sp *sp, t_f *f);
-char				*ft_hex(va_list arg, t_sp *sp, t_f *f, int uppercase);
-char				*ft_percent(t_sp *sp, t_f *f);
-char				*ft_flag_n(va_list arg, t_sp *sp);
+char				*ft_hex(va_list arg, t_sp *sp, t_f *f);
+char				*ft_percent(va_list arg, t_sp *sp, t_f *f);
+char				*ft_flag_n(va_list arg, t_sp *sp, t_f *f);
 
 t_sp				*init_sp(void);
 t_sp				*reset_sp(t_sp *sp);
@@ -65,7 +68,7 @@ char				*ft_add_sign(char *str, t_sp *sp, t_f *f);
 char				*precision_sign(char *str, t_f *f);
 char				*precision_integer(char *str, t_sp *sp, t_f *f);
 char				*width_integer(char *str, t_f *f);
-char				*keep_position_sign(char *str);
+char				*keep_position_sign(char *str, int condition);
 char				*ft_integer(va_list arg, t_sp *sp, t_f *f);
 
 int					ft_atoi_no_sign(const char *nptr);

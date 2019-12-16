@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/15 08:48:34 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/16 06:23:45 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,14 @@ char	*ft_precision_hex(char *str, t_sp *sp, t_f *f)
 	return (str);
 }
 
-char	*ft_hex(va_list arg, t_sp *sp, t_f *f, int uppercase)
+char	*ft_hex(va_list arg, t_sp *sp, t_f *f)
 {
 	char	*bl;
 	char	*str;
+	int		uppercase;
 
 	bl = "0123456789abcdef";
+	uppercase = f->plus;
 	sp->h = va_arg(arg, unsigned int);
 	if (!(str = ft_uitoa_base(sp->h, uppercase ? bl : "0123456789ABCDEF")))
 		return (NULL);
