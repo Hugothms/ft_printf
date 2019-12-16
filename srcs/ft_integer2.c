@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/16 16:36:00 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/16 17:56:44 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*precision_sign(char *str, t_f *f)
 	if (f->space || f->plus)
 	{
 		free(str);
-		if (!(str = ft_chardup(f->space ? '\0' : ' ')))
+		if (!(str = ft_chardup(f->space ? '\0' : '\0')))
 			return (NULL);
 	}
 	else
@@ -58,7 +58,7 @@ char	*ft_add_sign(char *str, t_sp *sp, t_f *f)
 	char	*tmpchar;
 	char	positive;
 
-	if (f->plus || f->space)
+	if (sp->i < 0 || f->plus || f->space)
 	{
 		positive = f->space ? ' ' : '+';
 		tmp = str;
@@ -74,10 +74,12 @@ char	*ft_add_sign(char *str, t_sp *sp, t_f *f)
 
 char	*width_integer(char *str, t_sp *sp, t_f *f)
 {
+	(void)sp;
 	if (f->width)
 	{
-		if (!(str = ft_cat(f->minus, str,
-		f->width - ((sp->i <= 0) || f->plus || f->space), f->zero ? '0' : ' ')))
+		if (!(str = ft_cat(f->minus, str, f->width - ((f->plus || f->space) &&
+		(((!f->precision) || (f->pr && (f->pr < f->width - 2)) || (sp->i < 0 && f->width ==(int)ft_strlen(str) + 1)))),
+		f->zero ? '0' : ' ')))
 			return (NULL);
 	}
 	return (str);

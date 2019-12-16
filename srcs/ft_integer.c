@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/16 16:34:23 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/16 17:52:44 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,30 +71,30 @@ char	*ft_integer(va_list arg, t_sp *sp, t_f *f)
 	if (!(str = ft_itoa(sp->i)))
 		return (NULL);
 	sp->i *= (ok == 1 ? -1 : 1);
-	// ft_putstr("|");
-	// ft_putstr(str);
-	// ft_putstr("|");
+	ft_putstr("|");
+	ft_putstr(str);
+	ft_putstr("|");
 	if (f->precision)
 	{
 		if (!(str = precision_integer(str, sp, f)))
 			return (NULL);
 	}
-	// ft_putstr("|");
-	// ft_putstr(str);
-	// ft_putstr("|");
+	ft_putstr("|");
+	ft_putstr(str);
+	ft_putstr("|");
 	if (!f->zero)
 	{
 		if (!(str = ft_add_sign(str, sp, f)))
 			return (NULL);
 	}
-	// ft_putstr("|");
-	// ft_putstr(str);
-	// ft_putstr("|");
+	ft_putstr("|");
+	ft_putstr(str);
+	ft_putstr("|");
 	if (!(str = width_integer(str, sp, f)))
 		return (NULL);
-	// ft_putstr("|");
-	// ft_putstr(str);
-	// ft_putstr("|");
+	ft_putstr("|");
+	ft_putstr(str);
+	ft_putstr("|");
 	if (f->zero)
 	{
 		if (!(str = ft_add_sign(str, sp, f)))
@@ -106,9 +106,9 @@ char	*ft_integer(va_list arg, t_sp *sp, t_f *f)
 	// 	f->plus && !f->minus && in_charset(' ', str))))
 	// 		return (NULL);
 	// }
-	// ft_putstr("|");
-	// ft_putstr(str);
-	// ft_putstr("|");
+	ft_putstr("|");
+	ft_putstr(str);
+	ft_putstr("|");
 	if (!sp->i && f->plus && f->precision && !f->pr && f->width < 2)
 	{
 		if (!(str = pansement(str)))
