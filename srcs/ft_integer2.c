@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/15 11:33:49 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/16 04:05:53 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_add_sign(char *str, t_sp *sp, t_f *f)
 	char	*tmpchar;
 	char	sign;
 
-	if (sp->i >= 0 && (f->space || f->plus))
+	if (sp->i >= 0 && (f->space || f->plus) && !(!sp->i && f->space))
 	{
 		if (sp->i >= 0)
 			sign = f->space ? ' ' : '+';
@@ -52,10 +52,9 @@ char	*precision_sign(char *str, t_f *f)
 	return (str);
 }
 
-char *precision_integer(char *str, t_sp *sp, t_f *f)
+char	*precision_integer(char *str, t_sp *sp, t_f *f)
 {
 	int		len;
-	int		condition;
 
 	len = ft_strlen(str);
 	if (!sp->i && !f->pr)
@@ -65,8 +64,7 @@ char *precision_integer(char *str, t_sp *sp, t_f *f)
 	}
 	else if (f->precision && f->pr >= len)
 	{
-		condition = sp->i < 0 || f->plus || f->space;
-		if (!(str = ft_cat(0, str, f->pr + condition, '0')))
+		if (!(str = ft_cat(0, str, f->pr + (sp->i < 0), '0')))
 			return (NULL);
 	}
 	else
@@ -87,30 +85,25 @@ char	*width_integer(char *str, t_f *f)
 	return (str);
 }
 
-char	*keep_position_sign(char *str, t_f *f)
+char	*keep_position_sign(char *str)
 {
-	int		index_sign;
-	int		index_first;
-	int		foundsign;
-	int		foundfirst;
+	int		is;
+	int		idf;
+	int		fds;
+	int		fdf;
 	char	c;
 
-	index_sign = f->minus ? 0 : ft_strlen(str);
-	index_first = 0;
-	while (index_first < (int)ft_strlen(str) && !(foundfirst = in_charset(str[index_first], "+-0")))
-		index_first++;
-	while ((f->minus ? index_sign < (int)ft_strlen(str) : index_sign) && !(foundsign = in_charset(str[index_sign], " +-")))
-		f->minus ? index_sign++ : index_sign--;
-	if (!foundfirst)
+	is = 0;
+	idf = 0;
+	while (idf < (int)ft_strlen(str) && !(fdf = in_charset(str[idf], "-")))
+		idf++;
+	while (is < (int)ft_strlen(str) && !(fds = in_charset(str[is], "0")))
+		is++;
+	if (fds && fdf)
 	{
-		while (index_first < index_sign && !in_charset(str[index_first], " "))
-			index_first++;
-	}
-	if (foundsign && foundfirst)
-	{
-		c = str[index_sign];
-		str[index_sign] = str[index_first];
-		str[index_first] = c;
+		c = str[is];
+		str[is] = str[idf];
+		str[idf] = c;
 	}
 	return (str);
 }

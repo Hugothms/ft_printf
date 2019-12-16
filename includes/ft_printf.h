@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:44:08 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/15 10:36:22 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/16 03:44:58 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char				*ft_add_sign(char *str, t_sp *sp, t_f *f);
 char				*precision_sign(char *str, t_f *f);
 char				*precision_integer(char *str, t_sp *sp, t_f *f);
 char				*width_integer(char *str, t_f *f);
-char				*keep_position_sign(char *str, t_f *f);
+char				*keep_position_sign(char *str);
 char				*ft_integer(va_list arg, t_sp *sp, t_f *f);
 
 int					ft_atoi_no_sign(const char *nptr);
