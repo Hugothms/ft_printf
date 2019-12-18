@@ -6,13 +6,13 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:42:33 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/18 16:51:40 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/18 18:06:10 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	fill_ftab(fptr *ftab)
+void	fill_ftab(t_fptr *ftab)
 {
 	ftab[0] = &ft_char;
 	ftab[1] = &ft_string;
@@ -28,7 +28,7 @@ void	fill_ftab(fptr *ftab)
 
 char	*ft_conversion(const char *fmt, va_list arg, t_sp *sp, t_f *f)
 {
-	fptr	ftab[NB_CONV];
+	t_fptr	ftab[NB_CONV];
 	char	*conversions;
 	int		i;
 

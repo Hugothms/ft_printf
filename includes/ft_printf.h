@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:44:08 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/18 16:46:43 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/18 18:09:03 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct		s_flags
 	int				plus;
 }					t_f;
 
-typedef char	*(*fptr)(va_list, t_sp*, t_f*);
+typedef char		*(*t_fptr)(va_list arg, t_sp *sp, t_f *f);
 
 int					ft_printf(const char *format, ...);
 
