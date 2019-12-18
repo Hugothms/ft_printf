@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/16 06:23:45 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/18 16:03:07 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_add_prefix(char *str, t_sp *sp, t_f *f, int uppercase)
 	if (f->hash && sp->h)
 	{
 		tmp = str;
-		if (!(tmpstr = ft_strdup(uppercase ? "0x" : "0X")))
+		if (!(tmpstr = ft_strdup(uppercase ? "0X" : "0x")))
 			return (NULL);
 		if (!(str = ft_strjoin(tmpstr, str)))
 			return (NULL);
@@ -58,7 +58,7 @@ char	*ft_hex(va_list arg, t_sp *sp, t_f *f)
 	bl = "0123456789abcdef";
 	uppercase = f->plus;
 	sp->h = va_arg(arg, unsigned int);
-	if (!(str = ft_uitoa_base(sp->h, uppercase ? bl : "0123456789ABCDEF")))
+	if (!(str = ft_uitoa_base(sp->h, uppercase ? "0123456789ABCDEF" : bl)))
 		return (NULL);
 	if (!(str = ft_precision_hex(str, sp, f)))
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 16:07:56 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/16 06:18:24 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/18 16:35:03 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,6 @@ void	ft_get_precision(const char *fmt, t_sp *sp, t_f *f, va_list arg)
 
 char	*ft_flag_n(va_list arg, t_sp *sp, t_f *f)
 {
-	/*int	*p;
-
-	p = va_arg(arg, unsigned long);
-	*p = sp->len;*/
 	(void)f;
 	(void)arg;
 	sp->index++;
