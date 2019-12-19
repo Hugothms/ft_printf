@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/13 17:44:01 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/19 16:18:47 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_unsigned_int(va_list arg, t_sp *sp, t_f *f)
 	}
 	if (f->width)
 	{
-		if (!(str = ft_cat(f->minus, str, f->width, f->zero ? '0' : ' ')))
+		if (!(str = ft_cat(f->minus, str, f->width, f->zero && !f->precision ? '0' : ' ')))
 			return (NULL);
 	}
 	return (str);

@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 16:07:56 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/18 16:35:03 by hthomas          ###   ########.fr       */
+/*   Updated: 2019/12/19 15:56:54 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ void	ft_get_precision(const char *fmt, t_sp *sp, t_f *f, va_list arg)
 		if (i >= 0)
 		{
 			f->precision = 1;
-			f->zero = 0;
 			f->pr = i;
 		}
 	}
