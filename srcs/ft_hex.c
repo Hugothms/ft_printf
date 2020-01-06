@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/18 16:03:07 by hthomas          ###   ########.fr       */
+/*   Updated: 2020/01/06 10:34:27 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	*ft_hex(va_list arg, t_sp *sp, t_f *f)
 		return (NULL);
 	if (f->width)
 	{
-		if (!(str = ft_cat(f->minus, str, f->width, f->zero ? '0' : ' ')))
+		if (!(str = ft_cat(f->minus, str, f->width, f->zero && !f->pr ? '0' : ' ')))
 			return (NULL);
 	}
 	return (str);

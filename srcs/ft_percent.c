@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/19 15:47:14 by hthomas          ###   ########.fr       */
+/*   Updated: 2020/01/06 11:54:18 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_percent(va_list arg, t_sp *sp, t_f *f)
 		return (NULL);
 	if (f->width || f->zero)
 	{
-		if (!(str = ft_cat(f->minus, str, f->width, f->zero ? '0' : ' ')))
+		if (!(str = ft_cat(f->minus, str, f->width, f->zero && !f->minus ? '0' : ' ')))
 			return (NULL);
 		if (!sp->i)
 			str[f->width - 1] = '\0';

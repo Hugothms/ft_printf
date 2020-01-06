@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 16:07:56 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/19 15:56:54 by hthomas          ###   ########.fr       */
+/*   Updated: 2020/01/06 12:14:39 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	ft_get_width(const char *fmt, t_sp *sp, t_f *f, va_list arg)
 		{
 			f->width *= -1;
 			f->minus = 1;
+			f->zero = 0;
 		}
 		sp->index++;
 	}

@@ -33,8 +33,6 @@ int	main(void)
 	printf("\n\033[0;36mreturn = %d\033[0m\n\n\n\n\n\n\n", ret2);
 
 
-*/
-
 
 	ret = printf("|%5%|");
 	printf("\n\033[0;36mreturn = %d\033[0m\n", ret);
@@ -60,10 +58,8 @@ int	main(void)
 	printf("\n\033[0;36mreturn = %d\033[0m\n", ret);
 	ret2 = ft_printf("|%10.5%|");
 	printf("\n\033[0;36mreturn = %d\033[0m\n\n\n\n\n", ret2);
-
-
-
-
+*/
+/*
 	ret = printf("|%010.5i|", -42);
 	printf("\n\033[0;36mreturn = %d\033[0m\n", ret);
 	ret2 = ft_printf("|%010.5i|", -42);
@@ -72,25 +68,11 @@ int	main(void)
 	ret = printf("|%10.5i|", -42);
 	printf("\n\033[0;36mreturn = %d\033[0m\n", ret);
 	ret2 = ft_printf("|%10.5i|", -42);
-	printf("\n\033[0;36mreturn = %d\033[0m\n\n\n\n", ret2);
+	printf("\n\033[0;36mreturn = %d\033[0m\n\n\n\n\n\n", ret2);
 
+*/
 
-
-
-	ret = printf("|%010.5u|", 42);
-	printf("\n\033[0;36mreturn = %d\033[0m\n", ret);
-	ret2 = ft_printf("|%010.5u|", 42);
-	printf("\n\033[0;36mreturn = %d\033[0m\n\n", ret2);
-
-	ret = printf("|%10.5u|", 42);
-	printf("\n\033[0;36mreturn = %d\033[0m\n", ret);
-	ret2 = ft_printf("|%10.5u|", 42);
-	printf("\n\033[0;36mreturn = %d\033[0m\n\n\n\n", ret2);
-
-
-
-
-
+/*
 	ret = printf("|%010.5x|", 420);
 	printf("\n\033[0;36mreturn = %d\033[0m\n", ret);
 	ret2 = ft_printf("|%010.5x|", 420);
@@ -101,18 +83,33 @@ int	main(void)
 	ret2 = ft_printf("|%10.5x|", 420);
 	printf("\n\033[0;36mreturn = %d\033[0m\n\n", ret2);
 
+*/
 
 
 
+/*
+ret = printf("|%-05%|");
+	printf("\n\033[0;36mreturn = %d\033[0m\n", ret);
+	ret2 = ft_printf("|%-05%|");
+	printf("\n\033[0;36mreturn = %d\033[0m\n\n", ret2);
+
+	ret = printf("|%-5%|");
+	printf("\n\033[0;36mreturn = %d\033[0m\n", ret);
+	ret2 = ft_printf("|%-5%|");
+	printf("\n\033[0;36mreturn = %d\033[0m\n\n", ret2);
+
+*/
 
 
+	ret = printf("|%c|", 0);
+	printf("\n\033[0;36mreturn = %d\033[0m\n", ret);
+	ret2 = ft_printf("|%c|", 0);
+	printf("\n\033[0;36mreturn = %d\033[0m\n\n", ret2);
 
-
-
-
-
-
-
+	ret = printf("|%-5c|", 0);
+	printf("\n\033[0;36mreturn = %d\033[0m\n", ret);
+	ret2 = ft_printf("|%-5c|", 0);
+	printf("\n\033[0;36mreturn = %d\033[0m\n\n", ret2);
 
 
 /*

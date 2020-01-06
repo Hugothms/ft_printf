@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:42:33 by hthomas           #+#    #+#             */
-/*   Updated: 2019/12/18 18:06:10 by hthomas          ###   ########.fr       */
+/*   Updated: 2020/01/06 11:51:41 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,27 @@ int		ft_printf_continue(const char *fmt, va_list arg, t_sp *sp)
 	ft_get_width(fmt, sp, f, arg);
 	ft_get_precision(fmt, sp, f, arg);
 	if (!(str = ft_conversion(fmt, arg, sp, f)))
-		return (ERR);
+		return (0);
 	sp->len += ft_strlen(str);
 	ft_putstr(str);
 	free(str);
 	free(f);
+	return (OK);
+}
+
+int		function(const char *fmt, va_list arg, t_sp *sp)
+{
+	reset_sp(sp);
+	if (fmt[sp->index] == '%')
+	{
+		if (!ft_printf_continue(fmt, arg, sp))
+			return (0);
+	}
+	else
+	{
+		ft_putchar(fmt[sp->index]);
+		sp->len++;
+	}
 	return (OK);
 }
 
@@ -79,14 +95,8 @@ int		ft_printf(const char *fmt, ...)
 		return (ERR);
 	while (fmt[sp->index])
 	{
-		reset_sp(sp);
-		if (fmt[sp->index] == '%')
-			ft_printf_continue(fmt, arg, sp);
-		else
-		{
-			ft_putchar(fmt[sp->index]);
-			sp->len++;
-		}
+		if (!function(fmt, arg, sp))
+			return (ERR);
 		sp->index++;
 	}
 	len = sp->len;
