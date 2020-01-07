@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2020/01/06 11:55:30 by hthomas          ###   ########.fr       */
+/*   Updated: 2020/01/07 13:45:00 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ char	*ft_string(va_list arg, t_sp *sp, t_f *f)
 		return (NULL);
 	if (f->width)
 	{
-		if (!(str = ft_cat(f->minus, str, f->width, f->zero && !f->minus ? '0' : ' ')))
+		if (!(str = ft_cat(f->minus, str, f->width,
+		f->zero && !f->minus ? '0' : ' ')))
 			return (NULL);
 	}
 	return (str);
