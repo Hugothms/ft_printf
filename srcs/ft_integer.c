@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2020/01/06 12:22:18 by hthomas          ###   ########.fr       */
+/*   Updated: 2020/01/07 13:42:09 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ char	*just_do_it(char *str, t_sp *sp, t_f *f)
 		if (!(str = precision_integer(str, sp, f)))
 			return (NULL);
 	}
-	if ((!f->zero && sp->i != INT_MIN) || f->pr)
+	if ((!f->zero && sp->i != INT_MIN) || f->precision)
 	{
 		if (!(str = ft_add_sign(str, sp, f)))
 			return (NULL);
 	}
 	if (!(str = width_integer(str, sp, f)))
 		return (NULL);
-	if (f->zero && !f->pr)
+	if (f->zero && !f->precision)
 	{
 		if (!(str = ft_add_sign(str, sp, f)))
 			return (NULL);

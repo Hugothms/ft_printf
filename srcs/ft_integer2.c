@@ -6,7 +6,7 @@
 /*   By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 17:49:15 by hthomas           #+#    #+#             */
-/*   Updated: 2020/01/06 09:08:05 by hthomas          ###   ########.fr       */
+/*   Updated: 2020/01/07 13:41:58 by hthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ char	*width_integer(char *str, t_sp *sp, t_f *f)
 	if (f->width)
 	{
 		if (!(str = ft_cat(f->minus, str, f->width - ((sp->i < 0)
-		&& (f->zero && !f->pr)), f->zero && !f->pr ? '0' : ' ')))
+		&& (f->zero && !f->precision)),
+		f->zero && !f->precision ? '0' : ' ')))
 			return (NULL);
 	}
 	return (str);
