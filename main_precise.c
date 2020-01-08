@@ -11,9 +11,9 @@ int	main(void)
 
 	int		c = 'a';
 
-	ret = printf("|%d|", INT_MIN);
+	ret = printf("%*.*i", 10, 5, -42);
 	printf("\n\033[0;36mreturn = %d\033[0m\n", ret);
-	ret2 = ft_printf("|%d|", INT_MIN);
+	ret2 = ft_printf("%*.*i", 10, 5, -42);
 	printf("\n\033[0;36mreturn = %d\033[0m\n\n\n\n", ret2);
 
 	ret = printf("|%d|", -42);
