@@ -1,4 +1,4 @@
-#Printf
+# Printf  
 Because putnbr and putstr aren’t enough  
 Summary: This project is pretty straight forward. You will recode printf. Hopefully you
 will be able to reuse it in future project without the fear of being flagged as a cheater.
