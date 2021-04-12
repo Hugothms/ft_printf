@@ -6,13 +6,13 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/04 11:49:24 by hthomas           #+#    #+#              #
-#    Updated: 2019/12/06 15:33:52 by hthomas          ###   ########.fr        #
+#    Updated: 2021/04/12 16:06:00 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		= 	libft.a
-OBJS		=	${SRCS:.c=.o}
-INCLUDES	=	libft.h
+OBJS		=	$(SRCS:.c=.o)
+INCLUDES	=	.
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror
 SRCS 		=	ft_memset.c				\
@@ -104,13 +104,13 @@ CLEAR_COLOR = \033[m
 
 all:		$(NAME)
 
-$(NAME):	${OBJS}
+$(NAME):	$(OBJS)
 	@echo "Creating $(GREEN_FG)libft.a $(CLEAR_COLOR)"
-	@ar rc	$(NAME) ${OBJS}
+	@ar rc	$(NAME) $(OBJS)
 	@ranlib	$(NAME)
 
 .c.o:
-	@${CC} ${CFLAGS} -I$(INCLUDES) -c $< -o ${<:.c=.o}
+	@$(CC) $(CFLAGS) -I$(INCLUDES) -c $< -o $(<:.c=.o)
 
 clean:
 	@rm -f $(OBJS)

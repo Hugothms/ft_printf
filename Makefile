@@ -6,7 +6,7 @@
 #    By: hthomas <hthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/27 13:45:08 by hthomas           #+#    #+#              #
-#    Updated: 2021/04/12 09:40:45 by hthomas          ###   ########.fr        #
+#    Updated: 2021/04/12 16:16:12 by hthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,28 +77,29 @@ all : complib $(NAME)
 $(OBJS) : %.o: %.c $(HEADER)
 	@$(CC) $(CFLAGS) -I $(INCL) -c $< -o $@
 
-$(NAME) : $(OBJS)
-	@ar rcs $@ $(OBJS) $(OBJSLIBFT)
+$(NAME) : $(OBJS) $(OBJSLIBFT)
+	@echo "Creating $(GREEN_FG)libftprintf.a $(CLEAR_COLOR)"
+	@ar rcs $@ $^
 
 complib :
 	@$(MAKE) -C libft all
 
 clean:
-	@#echo "$(REDL_FG)Deleting .o$(CLEAR_COLOR)"
+	@echo "$(REDL_FG)Deleting .o$(CLEAR_COLOR)"
 	@cd $(LIBFTDIR) && $(MAKE) clean
 	@rm -rf $(OBJS) $(LIBFT)
 
 fclean:		clean
-	@#echo "$(RED_FG)Deleting exe$(CLEAR_COLOR)"
+	@echo "$(RED_FG)Deleting libftprintf.a$(CLEAR_COLOR)"
 	@cd $(LIBFTDIR) && $(MAKE) fclean
 	@rm -f $(NAME) $(EXEC) $(EXEC_HARDCORE) $(EXEC_test) $(EXEC_precise)
 
 re:		fclean all
 
 .c.o:
-	@${CC} ${CFLAGS} -I$(INCLUDES) -c $< -o ${<:.c=.o}
+	@$(CC) $(CFLAGS) -I$(INCLUDES) -c $< -o $(<:.c=.o)
 
-.PHONY:	$(EXEC_precise)
+.PHONY:	$(EXEC)
 
 
 
@@ -106,5 +107,5 @@ re:		fclean all
 test:	$(EXEC)
 	./$<
 
-$(EXEC):	$(NAME) main.c
-	$(C) -o $@ main.c -L./ -lftprintf
+$(EXEC):	main.c $(NAME)
+	$(C) -o $@ $^
